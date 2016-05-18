@@ -12,6 +12,16 @@
   <script data-src="shaders/frag.js" data-name="shader" type="x-shader/x-fragment"></script>
   <script src="shaders/loader/ShaderLoader.min.js"></script>
 
+  <script> 
+    function loadPage (name)
+    {
+        window.location = 'https://seansoraghan.github.io/' + name;
+    }
+  </script>
+
+  <h1 onmouseover="style.cursor = 'pointer'" onmousedown="loadPage('sphere')"> Sphere</h1>
+  <h1 onmouseover="style.cursor = 'pointer'" onmousedown="loadPage('waves')"> Waves</h1>
+
   <!-- <script src="js/OrbitControls.js"></script> -->
 
   <script>
@@ -110,12 +120,9 @@
     	uniforms.time.value += 0.1;
     }
 
-    function loadPage (name)
-    {
-        window.location = 'https://seansoraghan.github.io/' + name;
-    }
-
   </script>
+
+  
 
 </body>
 </html>
