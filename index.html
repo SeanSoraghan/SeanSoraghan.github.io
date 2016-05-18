@@ -8,8 +8,8 @@
 
   <script type="text/javascript" src="jquery/jquery-1.12.3.min.js"></script>
   <script src="js/three.min.js"></script>
-  <script data-src="shaders/SphericalDeformation/vertex.js" data-name="shader" type="x-shader/x-vertex"></script>
-  <script data-src="shaders/SphericalDeformation/fragment.js" data-name="shader" type="x-shader/x-fragment"></script>
+  <script data-src="shaders/vert.js" data-name="shader" type="x-shader/x-vertex"></script>
+  <script data-src="shaders/frag.js" data-name="shader" type="x-shader/x-fragment"></script>
   <script src="shaders/loader/ShaderLoader.min.js"></script>
 
   <!-- <script src="js/OrbitControls.js"></script> -->
@@ -41,18 +41,13 @@
         renderer = new THREE.WebGLRenderer({antialias:true});
         renderer.setSize(WIDTH, HEIGHT);
         document.body.appendChild(renderer.domElement);
-        renderer.setClearColor (0);
 
         // Create a camera, zoom it out from the model a bit, and add it to the scene.
         camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 20000);
         camera.position.set(0,0,300);
         scene.add(camera);
 
-        // Create a light, set its position, and add it to the scene.
-        var light = new THREE.PointLight(0xffffff);
-        light.position.set(-100,200,100);
-        scene.add(light);
-
+        
     }
 
     function initWindowResizer()
@@ -72,7 +67,7 @@
     function initShaders()
     {
 
-    	var sphereGeometry = new THREE.SphereGeometry (50, 64, 64);
+    	var planeGeometry = new THREE.PlaneGeometry (window.innerWidth, window.innerHeight);
 		uniforms = 
 		{
 			time: {type: 'f', value: 0.0},
@@ -93,8 +88,8 @@
 						fragmentShader: shadFrag
 					}
 				);
-				var sphere = new THREE.Mesh ( sphereGeometry, shaderMat ); 
-				scene.add (sphere);
+				var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
+				scene.add (fragPlane);
 
 				//var plane = new THREE.Mesh ( PlaneGeometry, shaderMaterial );
 				//scene.add (plane);
