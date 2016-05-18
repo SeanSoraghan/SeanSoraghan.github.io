@@ -14,9 +14,9 @@ float gauss (in float x, in float amp, in float m, in float s)
 	return amp*expTerm;
 }
 
-vec2 getGaussianReferencePoint (in float x, in float amp, in float m, in float s)
+vec2 getGaussianReferencePoint (in float x, in float amp, in float m, in float s, in float yOffset)
 {
-	return vec2 (x, gauss (x, amp, m, s));
+	return vec2 (x, gauss (x, amp, m, s) + yOffset);
 }
 
 vec2 getGaussianMultiplicationReferencePoint (in float x, in float amp, in float m1, 
@@ -30,9 +30,10 @@ float getGaussianCurveColour (in vec2 pos, in vec2 gaussianReferencePoint, in fl
 	return clamp (1.0 - distance (pos, gaussianReferencePoint) * attenuation, 0.0, 1.0);
 }
 
-void addGaussianCurve (inout vec3 col, in vec2 pos, in float amp, in float m, in float s, in float lineAttenuation)
+void addGaussianCurve (inout vec3 col, in vec2 pos, in float amp, in float m, in float s, 
+					   in float yOffset, in float lineAttenuation)
 {
-	vec2 gPoint = getGaussianReferencePoint (pos.x, amp, m, s);
+	vec2 gPoint = getGaussianReferencePoint (pos.x, amp, m, s, yOffset);
 	float dist  = getGaussianCurveColour (pos, gPoint, lineAttenuation);
 	col += dist;
 }
@@ -51,26 +52,31 @@ void main()
 	vec2 pos = vec2 (vertexPosition.x / resolution.x, vertexPosition.y / resolution.y);
 	vec3 col = vec3 (0.0);
 
+	float swayAmpAnimation = (sin (time * 0.12) * 0.001);// + 0.5);
 	float globalAmpAnimation = (sin (time * 0.12) * 0.5 + 0.5);
-	//for (float m = -1.0; m < 1.0; m += 0.1)
-//	{
-		for (float i = 1.0; i < 21.0; i++)
-		{
-			float ampAnimation = sin (time * (i / (60.0 + i)));
-			float amp = (i * 0.003);
+	float globalVAnimation = sin (time * 0.12) * 0.0005;
+	float zeroLine = sin (pos.x * 30.0 + time) * sin (time * 0.18) * sin (time * 0.1) * 0.01;
 
-			float m = (i - 10.0) / 150.0;
-			float mAnimation = sin (time * (i / (200.0 + (20.0 - i))));
+	for (float i = 7.0; i < 21.0; i++)
+	{
+		float ampAnimation = sin (time * (i / (60.0 + i)));
+		float amp = (i * 0.003);
 
-			float attenuationAnimation = sin (time * i * 0.001);
-			float attenuation = 500.0 + attenuationAnimation * 100.0; 
-			addGaussianCurve (col, pos, amp * ampAnimation * globalAmpAnimation, m * mAnimation, 0.03, attenuation);
-		}
-//	}
-	float zeroLineEdge = 0.05;
-	float posCol = smoothstep (0.0, zeroLineEdge, pos.y);
-	float negCol = smoothstep (0.0, -zeroLineEdge, pos.y);
+		float m = (i - 10.0) / resolution.x * 10.0;
+		float mAnimation = sin (time * (i / (200.0 + (20.0 - i))));
+
+		float attenuationAnimation = sin (time * 0.001);
+		float attenuation = 500.0 + attenuationAnimation * 100.0; 
+
+		addGaussianCurve (col, pos, (amp * ampAnimation + swayAmpAnimation) * (1.0 - abs (pos.x)) * globalAmpAnimation, 
+						  m * mAnimation, 0.02 + globalVAnimation, zeroLine, attenuation);
+	}
+
+	float zeroLineEdge = 0.03;
+	float posCol = smoothstep (zeroLine, zeroLine + zeroLineEdge, pos.y);
+	float negCol = smoothstep (zeroLine, zeroLine - zeroLineEdge, pos.y);
 	col *= posCol + negCol;
-	col *= vec3 (0.8, 0.9, 1.0);
+	//col = clamp (col, 0.0, 1.0);
+	col *= vec3 (0.3, 0.48, 0.7);
 	gl_FragColor = vec4 (col, 1.0); 
 }
