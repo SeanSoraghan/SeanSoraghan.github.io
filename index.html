@@ -28,6 +28,7 @@
         initScene();
         initShaders();
         initWindowResizer();
+        loadPage ('waves');
     }
 
     function initScene()
@@ -107,6 +108,11 @@
     function updateUniforms()
     {
     	uniforms.time.value += 0.1;
+    }
+
+    function loadPage (name)
+    {
+        window.location = 'https://seansoraghan.github.io/' + name;
     }
 
   </script>
