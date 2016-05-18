@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Sean Soraghan</title>
+  <meta charset="utf-8">
+</head>
+<body style="margin: 0;">
+
+  <script type="text/javascript" src="jquery/jquery-1.12.3.min.js"></script>
+  <script src="js/three.min.js"></script>
+  <script data-src="shaders/SphericalDeformation/vertex.js" data-name="shader" type="x-shader/x-vertex"></script>
+  <script data-src="shaders/SphericalDeformation/fragment.js" data-name="shader" type="x-shader/x-fragment"></script>
+  <script src="shaders/loader/ShaderLoader.min.js"></script>
+
+  <!-- <script src="js/OrbitControls.js"></script> -->
+
+  <script>
+
+    // Set up the scene, camera, and renderer as global variables.
+    var scene, camera, renderer, uniforms;
+
+    init();
+    animate();
+
+    // Sets up the scene.
+    function init() {
+
+        initScene();
+        initShaders();
+        initWindowResizer();
+    }
+
+    function initScene()
+    {
+    	// Create the scene and set the scene size.
+        scene = new THREE.Scene();
+        var WIDTH = window.innerWidth,
+            HEIGHT = window.innerHeight;
+
+        // Create a renderer and add it to the DOM.
+        renderer = new THREE.WebGLRenderer({antialias:true});
+        renderer.setSize(WIDTH, HEIGHT);
+        document.body.appendChild(renderer.domElement);
+        renderer.setClearColor (0);
+
+        // Create a camera, zoom it out from the model a bit, and add it to the scene.
+        camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 20000);
+        camera.position.set(0,0,300);
+        scene.add(camera);
+
+        // Create a light, set its position, and add it to the scene.
+        var light = new THREE.PointLight(0xffffff);
+        light.position.set(-100,200,100);
+        scene.add(light);
+
+    }
+
+    function initWindowResizer()
+    {
+    	// Create an event listener that resizes the renderer with the browser window.
+    	window.addEventListener('resize', function() 
+        {
+	        var WIDTH = window.innerWidth,
+	            HEIGHT = window.innerHeight;
+	        renderer.setSize(WIDTH, HEIGHT);
+	        camera.aspect = WIDTH / HEIGHT;
+	        camera.updateProjectionMatrix();
+	        uniforms.resolution.value = new THREE.Vector2 (window.innerWidth, window.innerHeight);
+        });
+    }
+
+    function initShaders()
+    {
+
+    	var sphereGeometry = new THREE.SphereGeometry (50, 64, 64);
+		uniforms = 
+		{
+			time: {type: 'f', value: 0.0},
+			resolution: {type: 'v2', value: new THREE.Vector2 (window.innerWidth, window.innerHeight)}
+		};
+
+		SHADER_LOADER.load 
+		(
+			function (data)
+			{
+				var shadVert = data.shader.vertex;
+				var shadFrag = data.shader.fragment;
+				var shaderMat = new THREE.ShaderMaterial 
+				(
+					{
+						uniforms: uniforms, attributes: {}, 
+						vertexShader: shadVert,
+						fragmentShader: shadFrag
+					}
+				);
+				var sphere = new THREE.Mesh ( sphereGeometry, shaderMat ); 
+				scene.add (sphere);
+
+				//var plane = new THREE.Mesh ( PlaneGeometry, shaderMaterial );
+				//scene.add (plane);
+			}
+		);
+    }
+    // Renders the scene and updates the render as needed.
+    function animate() 
+    {
+        requestAnimationFrame(animate);
+        updateUniforms();
+        renderer.render(scene, camera);
+    }
+
+    function updateUniforms()
+    {
+    	uniforms.time.value += 0.1;
+    }
+
+  </script>
+
+</body>
+</html>
