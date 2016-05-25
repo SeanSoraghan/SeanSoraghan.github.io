@@ -1,6 +1,28 @@
 var http    = require ('http');
 var request = require ('request');
 
+var newUserForm = 
+{
+	gender: 0,
+	age	  : 25,
+	musicalExperience: 2,
+	musicalProductionExperience: 3
+}
+
+request.post 
+( 
+	{url: 'http://ssbackend.herokuapp.com/new-user', form: newUserForm}, 
+	function optionalCallback (err, httpResponse, body) 
+	{
+		if (err)
+		{
+			return console.error ('failed to send data:', err);
+		}
+		console.log ('sent data. server response: ', body);
+	}
+);
+
+
 var stage1form = 
 {
 	userid						: 1,
@@ -14,7 +36,7 @@ var stage1form =
 
 request.post 
 ( 
-	{url: 'http://127.0.0.1:8010/stage1/answer', form: stage1form}, 
+	{url: 'http://ssbackend.herokuapp.com/stage1/answer', form: stage1form}, 
 	function optionalCallback (err, httpResponse, body) 
 	{
 		if (err)
@@ -40,7 +62,7 @@ var stage2form =
 
 request.post 
 ( 
-	{url: 'http://127.0.0.1:8010/stage2/answer', form: stage2form}, 
+	{url: 'http://ssbackend.herokuapp.com/stage2/answer', form: stage2form}, 
 	function optionalCallback (err, httpResponse, body) 
 	{
 		if (err)
