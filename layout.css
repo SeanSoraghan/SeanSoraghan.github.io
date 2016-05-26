@@ -1,0 +1,19 @@
+div.container 
+{
+    height: 10em;
+    /*position: relative*/ 
+}
+div.container p 
+{
+	font-family: 'Poiret One', sans-serif;
+	font-size: 30px;
+    margin: 0;
+    background: black;
+    color: white;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    margin-right: -50%;
+    z-index: 1;
+    transform: translate(-50%, -50%) 
+}
