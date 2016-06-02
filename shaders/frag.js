@@ -49,30 +49,30 @@ void addGaussianMultiplicationCurve (inout vec3 col, in vec2 pos, in float amp,
 
 void main() 
 { 
-	vec2 pos = vec2 (vertexPosition.x / resolution.x, vertexPosition.y / resolution.y);
+	float max = max(resolution.x, resolution.y);
+	vec2 pos = vec2 (vertexPosition.x / max, vertexPosition.y / max);
 	vec3 col = vec3 (0.0);
 
 	float swayAmpAnimation = (sin (time * 0.12) * 0.001);// + 0.5);
-	float globalAmpAnimation = (sin (time * 0.12) * 0.5 + 0.5);
+	float globalAmpAnimation = 1.0;//(sin (time * 0.12) * 0.4 + 0.6);
 	float globalVAnimation = sin (time * 0.12) * 0.0005;
-	float zeroLine = sin (pos.x * 30.0 + time) * sin (time * 0.18) * sin (time * 0.1) * 0.01;
+	float zeroLine =  sin (pos.x * 3.0 + time)/* * sin (time * 0.18) * sin (time * 0.1) */* 0.01;
 
 	for (float i = 7.0; i < 21.0; i++)
 	{
-		float ampAnimation = sin (time * (i / (60.0 + i)));
-		float amp = (i * 0.003);
+		float ampAnimation = sin (time * 0.3 + pos.x * 10.0);
+		float amp = (i * 0.015);
 
-		float m = (i - 10.0) / resolution.x * 10.0;
-		float mAnimation = sin (time * (i / (200.0 + (20.0 - i))));
+		float m = (i) / resolution.x * 10.0;
+		float mAnimation = sin (time * 0.05 + i * 0.2) * 0.5;
 
 		float attenuationAnimation = sin (time * 0.001);
-		float attenuation = 500.0 + attenuationAnimation * 100.0; 
-
-		addGaussianCurve (col, pos, (amp * ampAnimation + swayAmpAnimation) * (1.0 - abs (pos.x)) * globalAmpAnimation, 
-						  m * mAnimation, 0.02 + globalVAnimation, zeroLine, attenuation);
+		float attenuation = 100.0 + attenuationAnimation * 10.0; 
+		addGaussianCurve (col, pos, (amp * ampAnimation + swayAmpAnimation) /** (1.0 - abs (pos.x))*/ * globalAmpAnimation, 
+						  m * mAnimation, 0.2 + globalVAnimation, zeroLine, attenuation);
 	}
 
-	float zeroLineEdge = 0.03;
+	float zeroLineEdge = 0.000001;
 	float posCol = smoothstep (zeroLine, zeroLine + zeroLineEdge, pos.y);
 	float negCol = smoothstep (zeroLine, zeroLine - zeroLineEdge, pos.y);
 	col *= posCol + negCol;

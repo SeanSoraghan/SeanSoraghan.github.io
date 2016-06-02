@@ -6,12 +6,18 @@
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
 </head>
-<body style="margin: 0;">
+<body style="margin: 0; background-color: black;">
 
   <script type="text/javascript" src="jquery/jquery-1.12.3.min.js"></script>
   <script src="js/three.min.js"></script>
   <script data-src="shaders/vert.js" data-name="shader" type="x-shader/x-vertex"></script>
   <script data-src="shaders/frag.js" data-name="shader" type="x-shader/x-fragment"></script>
+  <script data-src="shaders/circles/vert.js" data-name="circles" type="x-shader/x-vertex"></script>
+  <script data-src="shaders/circles/frag.js" data-name="circles" type="x-shader/x-fragment"></script>
+  <script data-src="shaders/temp/vert.js" data-name="temp" type="x-shader/x-vertex"></script>
+  <script data-src="shaders/temp/frag.js" data-name="temp" type="x-shader/x-fragment"></script>
+  <script data-src="shaders/SphericalDeformation/vertex.js" data-name="sphere" type="x-shader/x-vertex"></script>
+  <script data-src="shaders/SphericalDeformation/fragment.js" data-name="sphere" type="x-shader/x-fragment"></script>
   <script src="shaders/loader/ShaderLoader.min.js"></script>
 
   <script> 
@@ -21,112 +27,113 @@
     }
   </script>
 
-  <!-- <h1 onmouseover="style.cursor = 'pointer'" onmousedown="loadPage('sphere')"> Sphere</h1> -->
-  <!--<h1 onmouseover="style.cursor = 'pointer'" onmousedown="loadPage('waves')"> Waves</h1> -->
+  <script src="js/waveDemo.js"></script>
 
-  <!-- <script src="js/OrbitControls.js"></script> -->
-
-  <script>
-
-    // Set up the scene, camera, and renderer as global variables.
-    var scene, camera, renderer, uniforms;
-
-    init();
-    animate();
-
-    // Sets up the scene.
-    function init() {
-
-        initScene();
-        initShaders();
-        initWindowResizer();
-        //loadPage ('soundsignature');
-    }
-
-    function initScene()
+  <script type="text/javascript">
+    var wavesDemoShadersLoadedCallback = function (data, threeDemo)
     {
-    	// Create the scene and set the scene size.
-        scene = new THREE.Scene();
-        var WIDTH = window.innerWidth,
-            HEIGHT = window.innerHeight;
-
-        // Create a renderer and add it to the DOM.
-        renderer = new THREE.WebGLRenderer({antialias:true});
-        renderer.setSize(WIDTH, HEIGHT);
-        document.body.appendChild(renderer.domElement);
-
-        // Create a camera, zoom it out from the model a bit, and add it to the scene.
-        camera = new THREE.PerspectiveCamera(45, WIDTH / HEIGHT, 0.1, 20000);
-        camera.position.set(0,0,300);
-        scene.add(camera);
-
-        
+      var shadVert = data.shader.vertex;
+      var shadFrag = data.shader.fragment;
+      var w = window.innerWidth / threeDemo.w;
+      var h = window.innerWidth / threeDemo.h;
+      var planeGeometry = new THREE.PlaneGeometry (w, h);
+      var shaderMat = new THREE.ShaderMaterial 
+      (
+          {
+              uniforms: threeDemo.uniforms, attributes: {}, 
+              vertexShader: shadVert,
+              fragmentShader: shadFrag
+          }
+      );
+      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
+      threeDemo.scene.add (fragPlane);
     }
 
-    function initWindowResizer()
+    var circlesDemoCallback = function (data, threeDemo)
     {
-    	// Create an event listener that resizes the renderer with the browser window.
-    	window.addEventListener('resize', function() 
-        {
-	        var WIDTH = window.innerWidth,
-	            HEIGHT = window.innerHeight;
-	        renderer.setSize(WIDTH, HEIGHT);
-	        camera.aspect = WIDTH / HEIGHT;
-	        camera.updateProjectionMatrix();
-	        uniforms.resolution.value = new THREE.Vector2 (window.innerWidth, window.innerHeight);
-        });
+      var shadVert = data.circles.vertex;
+      var shadFrag = data.circles.fragment;
+      var w = window.innerWidth / threeDemo.w;
+      var h = window.innerWidth / threeDemo.h;
+      var planeGeometry = new THREE.PlaneGeometry (w, h);
+      var shaderMat = new THREE.ShaderMaterial 
+      (
+          {
+              uniforms: threeDemo.uniforms, attributes: {}, 
+              vertexShader: shadVert,
+              fragmentShader: shadFrag
+          }
+      );
+      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
+      threeDemo.scene.add (fragPlane);
     }
 
-    function initShaders()
+    var tempDemoCallback = function (data, threeDemo)
     {
-
-    	var planeGeometry = new THREE.PlaneGeometry (window.innerWidth, window.innerHeight);
-		uniforms = 
-		{
-			time: {type: 'f', value: 0.0},
-			resolution: {type: 'v2', value: new THREE.Vector2 (window.innerWidth, window.innerHeight)}
-		};
-
-		SHADER_LOADER.load 
-		(
-			function (data)
-			{
-				var shadVert = data.shader.vertex;
-				var shadFrag = data.shader.fragment;
-				var shaderMat = new THREE.ShaderMaterial 
-				(
-					{
-						uniforms: uniforms, attributes: {}, 
-						vertexShader: shadVert,
-						fragmentShader: shadFrag
-					}
-				);
-				var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
-				scene.add (fragPlane);
-
-				//var plane = new THREE.Mesh ( PlaneGeometry, shaderMaterial );
-				//scene.add (plane);
-			}
-		);
+      var shadVert = data.temp.vertex;
+      var shadFrag = data.temp.fragment;
+      var w = window.innerWidth / threeDemo.w;
+      var h = window.innerWidth / threeDemo.h;
+      var planeGeometry = new THREE.PlaneGeometry (w, h);
+      var shaderMat = new THREE.ShaderMaterial 
+      (
+          {
+              uniforms: threeDemo.uniforms, attributes: {}, 
+              vertexShader: shadVert,
+              fragmentShader: shadFrag
+          }
+      );
+      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
+      threeDemo.scene.add (fragPlane);
     }
-    // Renders the scene and updates the render as needed.
-    function animate() 
+
+    var sphereDemoShadersLoadedCallback = function (data, threeDemo)
     {
-        requestAnimationFrame(animate);
-        updateUniforms();
-        renderer.render(scene, camera);
+      
+      var shadVert = data.sphere.vertex;
+      var shadFrag = data.sphere.fragment;
+      var sphereGeometry = new THREE.SphereGeometry (50, 64, 64);
+      var shaderMat = new THREE.ShaderMaterial 
+      (
+          {
+              uniforms: threeDemo.uniforms, attributes: {}, 
+              vertexShader: shadVert,
+              fragmentShader: shadFrag
+          }
+      );
+      var fragPlane = new THREE.Mesh ( sphereGeometry, shaderMat ); 
+      threeDemo.scene.add (fragPlane);
     }
-
-    function updateUniforms()
-    {
-    	uniforms.time.value += 0.1;
-    }
-
   </script>
 
-  <div class="container">
-        <p>Sean Soraghan</p>
+  
+
+  <div class="threedemolist" id="threecontainer">
+    <!-- <div class="list-item"> -->
+      <script>
+        var numR = 2;
+        var numC = 2;
+        var waves = new ThreeJSDemo (numR, numC, wavesDemoShadersLoadedCallback);
+        var sphere = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+        var circles = new ThreeJSDemo (numR, numC, circlesDemoCallback);
+        var temp = new ThreeJSDemo (numR, numC, tempDemoCallback);
+      </script>
+<!--     </div> -->
+  </div>
+
+<div id="title">
+        <div id="center">Sean Soraghan</div>
+  </div>
+<!--   <div class="demoscontainer">
+    <div class="demo">
+      <script src="js/waveDemo.js"></script>
     </div>
+    <div class="demo">
+      <script src="js/waveDemo.js"></script>
+    </div>
+  </div> -->
+    
+  
 
 </body>
 </html>

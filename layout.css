@@ -1,19 +1,99 @@
-div.container 
+/*div.titleText 
 {
     height: 10em;
-    /*position: relative*/ 
-}
-div.container p 
-{
-	font-family: 'Poiret One', sans-serif;
+    font-family: 'Poiret One', sans-serif;
 	font-size: 30px;
-    margin: 0;
+	z-index: 1;
+	margin: 0;
+}
+div.titleText > div.first 
+{
     background: black;
     color: white;
     position: absolute;
-    top: 5%;
+    top: 0%;
     left: 50%;
     margin-right: -50%;
-    z-index: 1;
-    transform: translate(-50%, -50%) 
+    transform: translate(-50%, 0%) 
+}
+div.titleText > div.last 
+{
+    background: white;
+    color: black;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%) 
+}*/
+
+#title        			  
+{
+	height: 10em;
+    font-family: 'Poiret One', sans-serif;
+	font-size: 30px;
+	z-index: 1;
+	margin: 0; 
+	/*width: 100%;  */
+}
+#center 
+{
+	position: absolute;
+	text-align: center;
+	background: black;
+	color: white;
+	left: 50%;
+	top: 1%;
+	margin-right: -50%;
+	transform: translate(-50%, 0%);
+}
+
+#right, #left { position:absolute; top: 2%; }
+#right        
+{ 
+	text-align: left;   
+	background: white;  
+	left: 50%; 
+	transform: translate(9%, 0%);
+	color: black;
+}
+#left         
+{ 
+	left: 50%; 
+	transform: translate(-90%, 0%);
+	text-align: right;  
+	background: black; 
+	color: white;
+}
+
+#threecontainer
+{
+	float: left;
+	width: 100%;
+	overflow: auto;
+	background-color: black;
+	/*white-space: nowrap;*/
+	margin: 0;
+}
+#threecontainer > div
+{
+	/*float: left;*/
+	/*width: 400;*/
+	display: inline-block;
+}
+
+.threedemolist
+{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	text-align: center;
+}
+
+.list-item 
+{
+	display: inline-block;
+	margin: 0;/*1em;*/
+	padding: 0%;
+	color: white;
 }
