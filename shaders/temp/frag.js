@@ -77,13 +77,11 @@ void main()
 	float yAbs = abs (pos.y);
 	vec2 centre1 = vec2(-0.1, 0.0);
 	vec2 centre2 = vec2(0.1, 0.0);
-	float r = getRForCentre (centre1, pos);// sqrt (pow(xAbs, 2.0) + pow(yAbs, 2.0));
+	float r = getRForCentre (centre1, pos);
 	float r2 = getRForCentre (centre2, pos);
 	float a = getAngleForCentre (centre1, pos);
 	float a2 = getAngleForCentre (centre2, pos);
-	// float addMultX = float(pos.x<0.0);
-	// float addMultY = float(pos.x>0.0) * float(pos.y<0.0);
-	// float a = (atan(pos.y / pos.x) + pi*addMultX + pi*2.0*addMultY) / (2.0*pi);
+
 	float rate1 = 25.0;
 	float rate2 = 26.0;
 	float spiralPos = mod(time, rate1) / rate1;
