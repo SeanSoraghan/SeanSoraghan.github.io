@@ -1,7 +1,7 @@
-function ThreeJSDemo (w, h, shadersLoadedCallback)
+function ThreeJSDemo (w, h, shadersLoadedCallback, updateSynthCallback)
 {
     initialiseMembers (this, w, h);
-    initialiseDemo (this);
+    initialiseDemo (this, updateSynthCallback);
     var t = this;
 
     function animate()
@@ -46,6 +46,9 @@ function ThreeJSDemo (w, h, shadersLoadedCallback)
         threeDemo.updateUniforms = function()
         {
             threeDemo.uniforms.time.value += 0.1;
+            
+            if (updateSynthCallback != undefined)
+                updateSynthCallback (threeDemo.uniforms.time.value);
         }
     }
 
