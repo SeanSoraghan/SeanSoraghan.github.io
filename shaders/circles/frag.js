@@ -45,6 +45,8 @@ void main()
 		c = orbit;
 	}
 
+	float d = clamp (1.0 - (distance(pos, vec2(0.0)) * 1.5), 0.0, 1.0);
+	col *= d;
 	// vec2 orbit1 = getOrbitPos (vec2 (0.0), 0.2, time * 0.1);
 	// float col1 = getCircleCentreDist (orbit1, pos, 20.0, 3.0);
 

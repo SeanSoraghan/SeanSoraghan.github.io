@@ -78,5 +78,8 @@ void main()
 	col *= posCol + negCol;
 	//col = clamp (col, 0.0, 1.0);
 	col *= vec3 (0.3, 0.48, 0.7);
+
+	float d = clamp (1.0 - abs (pos.x)*2.0, 0.0, 1.0);
+	col *= d;
 	gl_FragColor = vec4 (col, 1.0); 
 }
