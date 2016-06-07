@@ -9,7 +9,7 @@
 <body style="margin: 0; background-color: black;">
 
   <script type="text/javascript" src="jquery/jquery-1.12.3.min.js"></script>
-  <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script>
+  <!-- <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script> -->
   <script src="js/three.min.js"></script>
   <script data-src="shaders/vert.js" data-name="shader" type="x-shader/x-vertex"></script>
   <script data-src="shaders/frag.js" data-name="shader" type="x-shader/x-fragment"></script>
@@ -118,16 +118,14 @@
   
 
   <div class="threedemolist" id="threecontainer">
-    <!-- <div class="list-item"> -->
       <script>
         var numR = 2;
         var numC = 2;
-        var waves = new ThreeJSDemo (numR, numC, wavesDemoShadersLoadedCallback, updateMicro1);
+        var waves = new ThreeJSDemo (numR, numC, wavesDemoShadersLoadedCallback);
         var sphere = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
         var circles = new ThreeJSDemo (numR, numC, circlesDemoCallback);
         var spiral = new ThreeJSDemo (numR, numC, tempDemoCallback);
       </script>
-<!--     </div> -->
   </div>
 
 <div id="title">
