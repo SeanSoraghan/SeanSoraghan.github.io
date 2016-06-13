@@ -1,4 +1,6 @@
 uniform float time;
+uniform float centroid;
+uniform float rms;
 uniform vec2  resolution;
 
 varying vec2 vertexPosition;

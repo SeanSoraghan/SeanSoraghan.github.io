@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../layout.css">
+  <title>Sean Soraghan</title>
+  <meta charset="utf-8">
+</head>
+<body style="margin: 0; background-color: black;">
+
+  <script type="text/javascript">
+    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  </script>
+
+  <script type="text/javascript" src="../jquery/jquery-1.12.3.min.js"></script>
+  <!-- <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script> -->
+  <script src="../js/three.min.js"></script>
+  <script src="../js/synth-feature-extractor.js"></script>
+  <script data-src="../shaders/SphericalDeformation/audio-reactive-vert.js" data-name="sphere" type="x-shader/x-vertex"></script>
+  <script data-src="../shaders/SphericalDeformation/audio-reactive-frag.js" data-name="sphere" type="x-shader/x-fragment"></script>
+  <script src="../shaders/loader/ShaderLoader.min.js"></script>
+
+  <script> 
+    function loadPage (name)
+    {
+        window.location = 'https://seansoraghan.github.io/' + name;
+    }
+  </script>
+
+
+  <script src="avThreeJSDemo.js"></script>
+
+  <script type="text/javascript">  
+    var sphereDemoShadersLoadedCallback = function (data, threeDemo)
+    {
+      
+      var shadVert = data.sphere.vertex;
+      var shadFrag = data.sphere.fragment;
+      var sphereGeometry = new THREE.SphereGeometry (30, 64, 64);
+      var shaderMat = new THREE.ShaderMaterial 
+      (
+          {
+              uniforms: threeDemo.uniforms, attributes: {}, 
+              vertexShader: shadVert,
+              fragmentShader: shadFrag
+          }
+      );
+      var fragPlane = new THREE.Mesh ( sphereGeometry, shaderMat ); 
+      threeDemo.scene.add (fragPlane);
+    }
+  </script>
+
+  
+
+  <div class="threedemolist" id="threecontainer">
+      <script>
+        var numR = 2;
+        var numC = 2;
+
+        var sinOsc = new Synth (1024, 0);
+        var sinw = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sinOsc);
+
+        var sqrOsc = new Synth (1024, 1);
+        var sqrW = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sqrOsc);
+
+        var sawOsc = new Synth (1024, 2);
+        var sawT = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sawOsc);
+        // var sawT = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+        // var sqrW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+        // var plsW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+      </script>
+  </div>
+
+<!-- <div id="title">
+        <div id="center">Sean Soraghan</div>
+  </div> -->
+
+</body>
+</html>
