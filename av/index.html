@@ -36,7 +36,7 @@
       
       var shadVert = data.sphere.vertex;
       var shadFrag = data.sphere.fragment;
-      var sphereGeometry = new THREE.SphereGeometry (30, 64, 64);
+      var sphereGeometry = new THREE.SphereGeometry (60, 64, 64);
       var shaderMat = new THREE.ShaderMaterial 
       (
           {
@@ -45,8 +45,8 @@
               fragmentShader: shadFrag
           }
       );
-      var fragPlane = new THREE.Mesh ( sphereGeometry, shaderMat ); 
-      threeDemo.scene.add (fragPlane);
+      threeDemo.sphere = new THREE.Mesh ( sphereGeometry, shaderMat ); 
+      threeDemo.scene.add (threeDemo.sphere);
     }
   </script>
 
@@ -65,6 +65,15 @@
 
         var sawOsc = new Synth (1024, 2);
         var sawT = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sawOsc);
+
+        // var tempo = 130.0;
+        // var quarterNoteTime = 60.0 / tempo;
+
+        // var startTime = audioCtx.currentTime;
+        // sinOsc.trigger (startTime + quarterNoteTime);
+        // sinOsc.trigger (startTime + quarterNoteTime * 2.0);
+        // sinOsc.trigger (startTime + quarterNoteTime * 3.0);
+        // sinOsc.trigger (startTime + quarterNoteTime * 4.0);
         // var sawT = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
         // var sqrW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
         // var plsW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);

@@ -32,7 +32,7 @@ function Synth (windowSize, waveformType)
       else if (waveformType === 2)
         synth.osc.type = 'sawtooth';
 
-      synth.osc.frequency.value = 1000; // value in hertz
+      synth.osc.frequency.value = 500; // value in hertz
 
       synth.osc                .connect (synth.gainNode);
       synth.gainNode           .connect (synth.analyser);
@@ -44,32 +44,32 @@ function Synth (windowSize, waveformType)
       synth.rms = 0.0;
 
       // Start/stop  Interaction
-      // synth.isPlaying = false;
+      synth.isPlaying = false;
+      synth.time = 0.0;
       synth.attackTime = 0.02;
-      synth.releaseTime = 0.1;
+      synth.releaseTime = 1.6;
       synth.trigger = function()
+      {
+        synth.time = 0.0;
+        synth.isPlaying = true;
+        var now = audioCtx.currentTime;
+        var g = synth.gainNode.gain;
+        g.cancelScheduledValues(now);
+        g.linearRampToValueAtTime (0.99, now + synth.attackTime);
+        g.exponentialRampToValueAtTime(0.000001, now + synth.attackTime + synth.releaseTime);
+        g.setValueAtTime (0.0, now + synth.attackTime + synth.releaseTime + 0.001);
+        //g.linearRampToValueAtTime(0, then + synth.attackTime + synth.releaseTime)
+      }
+
+      synth.release = function()
       {
         var now = audioCtx.currentTime;
         var g = synth.gainNode.gain;
         g.cancelScheduledValues(now);
-        g.setValueAtTime(0, now);
-        g.linearRampToValueAtTime(1, now + synth.attackTime);
-        g.linearRampToValueAtTime(0, now + synth.attackTime + synth.releaseTime);
-
-        // if (!synth.isPlaying)
-        // {
-        //   synth.gainNode.gain.value = 1;
-        //   synth.isPlaying = true;
-        // }
+        g.exponentialRampToValueAtTime(0.000001, now + synth.releaseTime);
+        g.setValueAtTime (0.0, now + synth.releaseTime + 0.001);
+        synth.isPlaying = false;
       }
-      // synth.stop = function()
-      // {
-      //   if (synth.isPlaying)
-      //   {
-      //     synth.gainNode.gain.value = 0;
-      //     synth.isPlaying = false;
-      //   }
-      // }
 
       synth.osc.start();
   }

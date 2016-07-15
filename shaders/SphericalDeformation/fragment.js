@@ -19,7 +19,7 @@ void main()
 	
 	float innerShadowing = dist / 50.0;
 
-	col += diffuse * innerShadowing + highlight * (sin(time * 0.06) * 0.5 + 0.5);
+	col += diffuse * innerShadowing + highlight * (sin(time * 0.06 - 1.0) * 0.5 + 0.5);
 	col *= vec3 (0.3, 0.5, 0.4);
 	//col.z += dist;
 	gl_FragColor = vec4 (col, 1.0); 

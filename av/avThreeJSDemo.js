@@ -37,6 +37,7 @@ function SynthVisualiser (w, h, shadersLoadedCallback, synth)
         threeDemo.camera   = {};
         threeDemo.renderer = {};
         threeDemo.uniforms = {};
+        threeDemo.mouseDown = false;
     }
 
     function initialiseDemo (threeDemo, synth) {
@@ -44,11 +45,12 @@ function SynthVisualiser (w, h, shadersLoadedCallback, synth)
         initialiseScene (threeDemo, synth);
         initShaders (threeDemo, synth);
         threeDemo.updateUniforms = function()
-        {
-            threeDemo.uniforms.time.value += 0.1;
+        {   
+            threeDemo.uniforms.time.value    += 0.1;
             threeDemo.uniforms.centroid.value = synth.centroid;
-            threeDemo.uniforms.rms.value = synth.rms;
+            threeDemo.uniforms.rms.value      = synth.rms;
             threeDemo.uniforms.waveform.value = synth.waveform;
+            threeDemo.uniforms.freq.value     = synth.osc.frequency.value; 
         }
     }
 
@@ -71,6 +73,39 @@ function SynthVisualiser (w, h, shadersLoadedCallback, synth)
 
         listItem.addEventListener ('mousedown', function()
         {
+            //synth.trigger();
+            threeDemo.mouseDown = true;
+            if (threeDemo.sphere != null)
+            {
+                var position = new THREE.Vector3();
+                threeDemo.sphere.updateMatrixWorld(true);
+                position.getPositionFromMatrix( threeDemo.sphere.matrixWorld );
+                
+            }
+        }, false);
+
+        listItem.addEventListener ('mousemove', function()
+        {
+            if (threeDemo.mouseDown === true && threeDemo.sphere != null)
+            {
+                var position = new THREE.Vector3();
+                threeDemo.sphere.updateMatrixWorld(true);
+                position.getPositionFromMatrix( threeDemo.sphere.matrixWorld );
+                var spherePos = new THREE.Vector2 (position.x, position.y);
+
+                var mX = event.clientX;
+                var mY = event.clientY;
+                var mouse = new THREE.Vector2 (mX, mY);
+                var sphereToMouse = new THREE.Vector2();
+                sphereToMouse.subVectors (mouse, spherePos);
+
+                console.log(mouse.x + ',' + mouse.y + ',' + spherePos.y + ',' + spherePos.y + sphereToMouse.y + ',' + sphereToMouse.y);
+            }
+        })
+
+        listItem.addEventListener ('mouseup', function()
+        {
+            threeDemo.mouseDown = false;
             synth.trigger();
         }, false);
 
@@ -90,11 +125,12 @@ function SynthVisualiser (w, h, shadersLoadedCallback, synth)
         h = dim;
         threeDemo.uniforms = 
         {
-            time: {type: 'f', value: 0.0},
+            time:       {type: 'f', value: 0.0},
             resolution: {type: 'v2', value: new THREE.Vector2 (w, h)},
-            centroid: {type: 'f', value: synth.centroid},
-            rms: {type: 'f', value: synth.rms},
-            waveform: {type: 'i', value: synth.waveform}
+            centroid:   {type: 'f', value: synth.centroid},
+            rms:        {type: 'f', value: synth.rms},
+            waveform:   {type: 'i', value: synth.waveform},
+            freq:       {type: 'f', value: synth.osc.frequency.value}
         };
         SHADER_LOADER.load 
         (
