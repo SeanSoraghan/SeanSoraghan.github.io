@@ -32,7 +32,8 @@ function Synth (windowSize, waveformType)
       else if (waveformType === 2)
         synth.osc.type = 'sawtooth';
 
-      synth.osc.frequency.value = 500; // value in hertz
+      synth.centreFrequency = 200;
+      synth.osc.frequency.value = synth.centreFrequency; // value in hertz
 
       synth.osc                .connect (synth.gainNode);
       synth.gainNode           .connect (synth.analyser);
@@ -48,26 +49,33 @@ function Synth (windowSize, waveformType)
       synth.time = 0.0;
       synth.attackTime = 0.02;
       synth.releaseTime = 1.6;
+      synth.synthPitchOnRamp = 0.6;
       synth.trigger = function()
       {
         synth.time = 0.0;
         synth.isPlaying = true;
         var now = audioCtx.currentTime;
+
+        // var f = synth.osc.frequency;
+        // f.cancelScheduledValues (now);
+        // var originalF = f.value;
+        // f.setValueAtTime (now, synth.centreFrequency)
+        // f.linearRampToValueAtTime (f.value - 500.0, now + synth.synthPitchOnRamp);
+
         var g = synth.gainNode.gain;
         g.cancelScheduledValues(now);
         g.linearRampToValueAtTime (0.99, now + synth.attackTime);
         g.exponentialRampToValueAtTime(0.000001, now + synth.attackTime + synth.releaseTime);
         g.setValueAtTime (0.0, now + synth.attackTime + synth.releaseTime + 0.001);
-        //g.linearRampToValueAtTime(0, then + synth.attackTime + synth.releaseTime)
       }
 
       synth.release = function()
       {
         var now = audioCtx.currentTime;
         var g = synth.gainNode.gain;
-        g.cancelScheduledValues(now);
-        g.exponentialRampToValueAtTime(0.000001, now + synth.releaseTime);
-        g.setValueAtTime (0.0, now + synth.releaseTime + 0.001);
+        g.cancelScheduledValues        (now);
+        g.exponentialRampToValueAtTime (0.000001, now + synth.releaseTime);
+        g.setValueAtTime               (0.0, now + synth.releaseTime + 0.001);
         synth.isPlaying = false;
       }
 

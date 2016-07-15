@@ -10,7 +10,6 @@ function ThreeScene()
 	{
 		for (var i = this.objects.length - 1; i >= 0; i--) 
 		{
-			console.log(this.objects[i]);
         	this.objects[i].trigger();
 		}
 	}
