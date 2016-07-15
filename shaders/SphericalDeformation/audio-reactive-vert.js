@@ -30,7 +30,7 @@ void main()
 	float logRMS = clamp (log(rms*9.0 + 1.0), 0.0, 1.0);
 	float logCentroid =  clamp (log (centroid * 9.0 + 1.0), 0.0, 1.0);
 
-	float birdsEyeAngle = 0.2 * pi * 2.0;// * logRMS;
+	float birdsEyeAngle = pi * 0.5;// * logRMS;
 	mat2 birdsEyeRotation = getRotationMatrix (birdsEyeAngle);
 	
 	vec3 rotatedPos = vec3 (position.x, birdsEyeRotation * position.yz);

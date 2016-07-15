@@ -2,7 +2,6 @@ uniform float time;
 uniform float centroid;
 uniform float rms;
 
-uniform vec2  resolution;
 varying float azimuth;
 varying float inclination;
 varying vec3 norm;
@@ -18,14 +17,18 @@ void main()
 
 	float logRMS      = clamp (log (rms      * 9.0 + 1.0), 0.0, 1.0);
 	float logCentroid = clamp (log (centroid * 9.0 + 1.0), 0.0, 1.0);
+	float c 		  = clamp (centroid, 0.0, 1.0); 
 
-	float highlight = pow (1.0 - diffuse, 2.0);// * logCentroid;
+	float azi = clamp (azimuth, 0.0, 1.0);
+	float inc = clamp (inclination, 0.0, 1.0);
+
+	float highlight = pow (1.0 - diffuse, 5.0) * c;// * logCentroid;
 	float dist      = distance (vec3 (0.0), vert);
 	
 	float innerShadowing = dist / 50.0;
 
-	col += diffuse /* * innerShadowing*/ + clamp (highlight, 0.0, 1.0);
-	col *= vec3 (inclination * 0.3, 0.2, (1.0 - inclination));
+	col += diffuse /* * innerShadowing*/ + clamp (highlight, 0.0, 1.0) ;
+	col *= vec3 (0.3, 0.7, 1.0);
 
 	gl_FragColor = vec4 (col, 1.0); 
 }

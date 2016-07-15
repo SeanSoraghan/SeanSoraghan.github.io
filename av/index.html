@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="../layout.css">
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
 </head>
@@ -15,6 +14,7 @@
   <script type="text/javascript" src="../jquery/jquery-1.12.3.min.js"></script>
   <!-- <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script> -->
   <script src="../js/three.min.js"></script>
+  <script src="threeScene.js"></script>
   <script src="../js/synth-feature-extractor.js"></script>
   <script data-src="../shaders/SphericalDeformation/audio-reactive-vert.js" data-name="sphere" type="x-shader/x-vertex"></script>
   <script data-src="../shaders/SphericalDeformation/audio-reactive-frag.js" data-name="sphere" type="x-shader/x-fragment"></script>
@@ -27,58 +27,73 @@
     }
   </script>
 
-
-  <script src="avThreeJSDemo.js"></script>
+  <script src="sphereActor.js"></script>
 
   <script type="text/javascript">  
-    var sphereDemoShadersLoadedCallback = function (data, threeDemo)
+    var sphereDemoShadersLoadedCallback = function (data, sphereActor, mainScene, x, y)
     {
       
       var shadVert = data.sphere.vertex;
       var shadFrag = data.sphere.fragment;
-      var sphereGeometry = new THREE.SphereGeometry (60, 64, 64);
+      var sphereGeometry = new THREE.SphereGeometry (10, 64, 64);
       var shaderMat = new THREE.ShaderMaterial 
       (
           {
-              uniforms: threeDemo.uniforms, attributes: {}, 
+              uniforms: sphereActor.uniforms, attributes: {}, 
               vertexShader: shadVert,
               fragmentShader: shadFrag
           }
       );
-      threeDemo.sphere = new THREE.Mesh ( sphereGeometry, shaderMat ); 
-      threeDemo.scene.add (threeDemo.sphere);
+      sphereActor.sphere = new THREE.Mesh (sphereGeometry, shaderMat);
+      console.log(x + ', ' + y);
+      sphereActor.sphere.translateX (x);
+      sphereActor.sphere.translateY (y);
+      sphereActor.sphere.geometry.dynamic            = true;
+      sphereActor.sphere.geometry.verticesNeedUpdate = true;
+      sphereActor.sphere.geometry.normalsNeedUpdate  = true;
+      mainScene.scene.add (sphereActor.sphere);
     }
   </script>
 
   
 
-  <div class="threedemolist" id="threecontainer">
-      <script>
-        var numR = 2;
-        var numC = 2;
+  <script>
+    var scene = new ThreeScene();
+    //scene.objects.push (sinW);
+    var sinOsc = new Synth (1024, 0);
+    var sinw = new SphereActor (sphereDemoShadersLoadedCallback, sinOsc, scene, -50, 50);
 
-        var sinOsc = new Synth (1024, 0);
-        var sinw = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sinOsc);
+    var sqrOsc = new Synth (1024, 1);
+    var sqrw = new SphereActor (sphereDemoShadersLoadedCallback, sqrOsc, scene, 50, 50);
 
-        var sqrOsc = new Synth (1024, 1);
-        var sqrW = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sqrOsc);
+    var sawOsc = new Synth (1024, 2);
+    var sawT = new SphereActor (sphereDemoShadersLoadedCallback, sawOsc, scene, 50, -50);
 
-        var sawOsc = new Synth (1024, 2);
-        var sawT = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sawOsc);
+    //scene.scene.add (sinw.sphere);
+    scene.objects.push (sinw);
+    scene.objects.push (sqrw);
+    scene.objects.push (sawT);
 
-        // var tempo = 130.0;
-        // var quarterNoteTime = 60.0 / tempo;
+    // var sqrOsc = new Synth (1024, 1);
+    // var sqrW = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sqrOsc);
 
-        // var startTime = audioCtx.currentTime;
-        // sinOsc.trigger (startTime + quarterNoteTime);
-        // sinOsc.trigger (startTime + quarterNoteTime * 2.0);
-        // sinOsc.trigger (startTime + quarterNoteTime * 3.0);
-        // sinOsc.trigger (startTime + quarterNoteTime * 4.0);
-        // var sawT = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-        // var sqrW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-        // var plsW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-      </script>
-  </div>
+    // var sawOsc = new Synth (1024, 2);
+    // var sawT = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sawOsc);
+
+
+
+    // var tempo = 130.0;
+    // var quarterNoteTime = 60.0 / tempo;
+
+    // var startTime = audioCtx.currentTime;
+    // sinOsc.trigger (startTime + quarterNoteTime);
+    // sinOsc.trigger (startTime + quarterNoteTime * 2.0);
+    // sinOsc.trigger (startTime + quarterNoteTime * 3.0);
+    // sinOsc.trigger (startTime + quarterNoteTime * 4.0);
+    // var sawT = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+    // var sqrW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+    // var plsW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
+  </script>
 
 <!-- <div id="title">
         <div id="center">Sean Soraghan</div>
