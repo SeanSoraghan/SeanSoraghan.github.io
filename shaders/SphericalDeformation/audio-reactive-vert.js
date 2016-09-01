@@ -1,4 +1,5 @@
 uniform float time;
+uniform float rotation;
 uniform float centroid;
 uniform float rms;
 uniform float freq;
@@ -36,8 +37,8 @@ void main()
 	vec3 rotatedPos = vec3 (position.x, birdsEyeRotation * position.yz);
 	vec3 rotatedNorm = vec3 (normal.x, birdsEyeRotation * normal.yz);
 
-	float directionAngle = time;
-	mat2  directionRotation = getRotationMatrix (time * 0.1);
+	float directionAngle = rotation;
+	mat2  directionRotation = getRotationMatrix (directionAngle);
 
 	rotatedPos = vec3 (directionRotation * rotatedPos.xy, rotatedPos.z);
 	rotatedNorm = vec3 (directionRotation * rotatedNorm.xy, rotatedNorm.z);

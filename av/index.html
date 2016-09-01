@@ -13,6 +13,7 @@
 
   <script type="text/javascript" src="../jquery/jquery-1.12.3.min.js"></script>
   <!-- <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script> -->
+  <script src="clock.js"></script>
   <script src="../js/three.min.js"></script>
   <script src="threeScene.js"></script>
   <script src="../js/synth-feature-extractor.js"></script>
@@ -25,6 +26,10 @@
     {
         window.location = 'https://seansoraghan.github.io/' + name;
     }
+
+    var globalSpeed = 3.0;
+    var Max_Vel_Magnitude = 50.0;
+    var Min_Movement_Force = 0.1;
   </script>
 
   <script src="sphereActor.js"></script>
@@ -35,7 +40,8 @@
       
       var shadVert = data.sphere.vertex;
       var shadFrag = data.sphere.fragment;
-      var sphereGeometry = new THREE.SphereGeometry (10, 64, 64);
+      var r = 10;
+      var sphereGeometry = new THREE.SphereGeometry (r, 64, 64);
       var shaderMat = new THREE.ShaderMaterial 
       (
           {
@@ -46,6 +52,7 @@
       );
       sphereActor.sphere = new THREE.Mesh (sphereGeometry, shaderMat);
       console.log(x + ', ' + y);
+      sphereActor.radius = r;
       sphereActor.sphere.translateX (x);
       sphereActor.sphere.translateY (y);
       sphereActor.sphere.geometry.dynamic            = true;
@@ -58,22 +65,41 @@
   
 
   <script>
+    var clock = new Clock();
     var scene = new ThreeScene();
     //scene.objects.push (sinW);
-    var sinOsc = new Synth (1024, 0);
-    var sinw = new SphereActor (sphereDemoShadersLoadedCallback, sinOsc, scene, -50, 50);
+    var sinOsc = new Synth (1024, 0, 200);
+    var sinw = new SphereActor (sphereDemoShadersLoadedCallback, sinOsc, scene, -50, 0);
 
-    var sqrOsc = new Synth (1024, 1);
-    var sqrw = new SphereActor (sphereDemoShadersLoadedCallback, sqrOsc, scene, 50, 50);
+    var sqrOsc = new Synth (1024, 1, 300);
+    var sqrw = new SphereActor (sphereDemoShadersLoadedCallback, sqrOsc, scene, 0, 0);
 
-    var sawOsc = new Synth (1024, 2);
-    var sawT = new SphereActor (sphereDemoShadersLoadedCallback, sawOsc, scene, 50, -50);
+    var sawOsc = new Synth (1024, 2, 400);
+    var sawT = new SphereActor (sphereDemoShadersLoadedCallback, sawOsc, scene, 50, 0);
 
     //scene.scene.add (sinw.sphere);
     scene.objects.push (sinw);
     scene.objects.push (sqrw);
     scene.objects.push (sawT);
 
+    clock.dottedCallback = function()
+    {
+      sinw.trigger();
+    }
+
+    clock.crotchetCallback = function()
+    {
+      sqrw.trigger(); 
+    }
+
+    clock.fiveCallback = function()
+    {
+      sawT.trigger();
+    }
+
+    
+
+    clock.startClock();
     // var sqrOsc = new Synth (1024, 1);
     // var sqrW = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sqrOsc);
 

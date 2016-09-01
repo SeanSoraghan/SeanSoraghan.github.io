@@ -1,16 +1,64 @@
+var pointIsInCircle = function (point, circCentre, circRadius)
+{
+	var x = Math.abs (point.x - circCentre.x);
+	var y = Math.abs (point.y - circCentre.y);
+	
+	if (x < circRadius && y < circRadius)
+		return true;
+
+	var xsq = Math.pow (x, 2.0);
+	var ysq = Math.pow (y, 2.0);
+	var h = Math.sqrt (xsq + ysq);
+
+	return h <= circRadius;
+}
+
+var projectMouseIntoWorld = function (mousePos, scene)
+{
+	var mouseInWorld = new THREE.Vector3();
+
+	mouseInWorld.set
+	(
+	    (mousePos.x / window.innerWidth) * 2 - 1,
+	    - (mousePos.y / window.innerHeight) * 2 + 1,
+	    0.5 
+	);
+
+	scene.projector.unprojectVector (mouseInWorld, scene.camera);
+	var dir = mouseInWorld.sub (scene.camera.position).normalize();
+	var distance = - scene.camera.position.z / dir.z;
+	var pos = scene.camera.position.clone().add (dir.multiplyScalar (distance));
+
+	return pos;
+}
+
 function ThreeScene()
 {
+	this.updatePhysics = function()
+	{
+		for (var i = this.objects.length - 1; i >= 0; i--) 
+		{
+			var sphereActor = this.objects[i];
+			sphereActor.updatePhysics();
+		}
+	}
+
 	this.updateUniforms = function()
     {   
         for (var i = this.objects.length - 1; i >= 0; i--) 
         	this.objects[i].updateUniforms();
     }
 
-	this.triggerAllActors = function()
+	this.mouseClicked = function (mousePos)
 	{
+		
+		var mouseInWorld = projectMouseIntoWorld (mousePos, this);
+
 		for (var i = this.objects.length - 1; i >= 0; i--) 
 		{
-        	this.objects[i].trigger();
+			var sphereActor = this.objects[i];
+			if (pointIsInCircle (mouseInWorld, sphereActor.sphere.position, sphereActor.radius))
+        		sphereActor.select();
 		}
 	}
 
@@ -29,10 +77,11 @@ function ThreeScene()
 
 	function initialiseMembers (scene)
     {
-        scene.scene    = {};
-        scene.camera   = {};
-        scene.renderer = {};
-        scene.objects  = [];
+        scene.scene     = {};
+        scene.camera    = {};
+        scene.renderer  = {};
+        scene.projector = new THREE.Projector();
+        scene.objects   = [];
         scene.mouseDown = false;
     }
 
@@ -63,20 +112,36 @@ function ThreeScene()
 
         scene.renderer.domElement.addEventListener ('mousedown', function()
         {
-            //synth.trigger();
-            scene.triggerAllActors();
+            var mousePos = new THREE.Vector2 (event.x, event.y);// event.position;
+            scene.mouseClicked (mousePos);
             scene.mouseDown = true;
-            //check sphere colisions
         }, false);
 
         scene.renderer.domElement.addEventListener ('mousemove', function()
         {
             //check movement vector
+            var mousePos = new THREE.Vector2 (event.x, event.y);
+           	var mouseInWorld = projectMouseIntoWorld (mousePos, scene);
+           	for (var i = scene.objects.length - 1; i >= 0; i--) 
+			{
+				var actor = scene.objects[i];
+				if (actor.selected)
+					actor.updateMovementVector (mouseInWorld);
+			}
         })
 
         scene.renderer.domElement.addEventListener ('mouseup', function()
         {
             //trigger selected sphere
+            for (var i = scene.objects.length - 1; i >= 0; i--) 
+			{
+				var actor = scene.objects[i];
+				// if (actor.selected)
+				// 	actor.trigger();
+                if (actor.selected)
+                    actor.release();
+			}
+
         }, false);
 
         // document.body.appendChild (threeDemo.renderer.domElement);
@@ -85,12 +150,23 @@ function ThreeScene()
         scene.camera = new THREE.PerspectiveCamera (45, w / h, 0.1, 20000);
         scene.camera.position.set (0,0,300);
         scene.scene.add (scene.camera); 
+
+        var material = new THREE.LineBasicMaterial ({ color: 0xffffff });
+        var lineGeometry = new THREE.Geometry();
+        lineGeometry.vertices.push(new THREE.Vector3(-105, -105, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(-105, 105, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(105, 105, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(105, -105, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(-105, -105, 0));
+        var lineBox = new THREE.Line (lineGeometry, material);
+        scene.scene.add (lineBox);
     }
 
     function animate()
     {
         requestAnimationFrame (animate);
         t.updateUniforms();
+        t.updatePhysics();
         t.renderer.render (t.scene, t.camera);
     }
 
