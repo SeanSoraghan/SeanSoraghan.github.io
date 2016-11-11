@@ -46,7 +46,8 @@ function ThreeJSDemo (w, h, shadersLoadedCallback, updateSynthCallback)
         threeDemo.updateUniforms = function()
         {
             threeDemo.uniforms.time.value += 0.1;
-            
+            threeDemo.uniforms.centroid.value = centroid;
+            threeDemo.uniforms.rms.value = rms;
             if (updateSynthCallback != undefined)
                 updateSynthCallback (threeDemo.uniforms.time.value);
         }
@@ -85,7 +86,9 @@ function ThreeJSDemo (w, h, shadersLoadedCallback, updateSynthCallback)
         threeDemo.uniforms = 
         {
             time: {type: 'f', value: 0.0},
-            resolution: {type: 'v2', value: new THREE.Vector2 (w, h)}
+            resolution: {type: 'v2', value: new THREE.Vector2 (w, h)},
+            centroid: {type: 'f', value: 0.0},
+            rms: {type: 'f', value: 0.0}
         };
         SHADER_LOADER.load 
         (

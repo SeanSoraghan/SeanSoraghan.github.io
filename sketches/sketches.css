@@ -1,0 +1,49 @@
+#title        			  
+{
+	height: 10em;
+    font-family: 'Poiret One', sans-serif;
+	font-size: 30px;
+	z-index: 1;
+	margin: 0; 
+	/*width: 100%;  */
+}
+#center 
+{
+	position: absolute;
+	text-align: center;
+	background: black;
+	color: white;
+	left: 50%;
+	top: 1%;
+	margin-right: -50%;
+	transform: translate(-50%, 0%);
+}
+
+#threecontainer
+{
+	float: left;
+	width: 100%;
+	overflow: auto;
+	background-color: black;
+	margin: 0;
+}
+#threecontainer > div
+{
+	display: inline-block;
+}
+
+.threedemolist
+{
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	text-align: center;
+}
+
+.list-item 
+{
+	display: inline-block;
+	margin: 0;/*1em;*/
+	padding: 0%;
+	color: white;
+}
