@@ -4,7 +4,7 @@ function Clock()
 {
 	this.scheduleAheadTime = 0.1; 
 	this.lookahead         = 25.0;
-	this.timerWorker       = new Worker ("clockworker.js");
+	this.timerWorker       = new Worker ("clockWorker.js");
 
 	this.tempo             = 120.0;
 
