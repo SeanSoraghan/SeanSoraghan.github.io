@@ -7,10 +7,14 @@ function SphereActor (shadersLoadedCallback, synth, mainScene, x, y)
             this.movementVector.x *= -1;
             var pitchChange = Math.sign (this.movementVector.x);
             this.synth.changeFrequency (200 * pitchChange);
+            mainScene.highlightBoundaryBox();
         }
 
         if (this.sphere.position.y + this.radius > 100 || this.sphere.position.y - this.radius < -100)
+        {
             this.movementVector.y *= -1;
+            mainScene.highlightBoundaryBox();
+        }
         
         this.uniforms.rotation.value = Math.atan2 (this.movementVector.x, this.movementVector.y);
     }

@@ -34,6 +34,19 @@ var projectMouseIntoWorld = function (mousePos, scene)
 
 function ThreeScene()
 {
+    this.highlightBoundaryBox = function()
+    {
+        this.lineOpacity = 1.0;
+    }
+    this.updateBoundaryBox = function()
+    {
+        this.lineOpacity -= 0.05;
+        if (this.lineOpacity < 0.0)
+            this.lineOpacity = 0.0;
+        this.lineMaterial.color.r = this.lineOpacity;
+        this.lineMaterial.color.g = this.lineOpacity;
+        this.lineMaterial.color.b = this.lineOpacity;
+    }
 	this.updatePhysics = function()
 	{
 		for (var i = this.objects.length - 1; i >= 0; i--) 
@@ -83,6 +96,8 @@ function ThreeScene()
         scene.projector = new THREE.Projector();
         scene.objects   = [];
         scene.mouseDown = false;
+        scene.lineMaterial = {};
+        scene.lineOpacity  = 0.0;
     }
 
     function triggerAllActors (scene)
@@ -151,20 +166,21 @@ function ThreeScene()
         scene.camera.position.set (0,0,300);
         scene.scene.add (scene.camera); 
 
-        var material = new THREE.LineBasicMaterial ({ color: 0xffffff });
+        scene.lineMaterial = new THREE.LineBasicMaterial ({ color: 0xffffff });
         var lineGeometry = new THREE.Geometry();
         lineGeometry.vertices.push(new THREE.Vector3(-105, -105, 0));
         lineGeometry.vertices.push(new THREE.Vector3(-105, 105, 0));
         lineGeometry.vertices.push(new THREE.Vector3(105, 105, 0));
         lineGeometry.vertices.push(new THREE.Vector3(105, -105, 0));
         lineGeometry.vertices.push(new THREE.Vector3(-105, -105, 0));
-        var lineBox = new THREE.Line (lineGeometry, material);
+        var lineBox = new THREE.Line (lineGeometry, scene.lineMaterial);
         scene.scene.add (lineBox);
     }
 
     function animate()
     {
         requestAnimationFrame (animate);
+        t.updateBoundaryBox();
         t.updateUniforms();
         t.updatePhysics();
         t.renderer.render (t.scene, t.camera);

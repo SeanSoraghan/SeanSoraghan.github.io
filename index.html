@@ -2,25 +2,16 @@
 <html lang="en">
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" type="text/css" href="foundation.css">
   <link rel="stylesheet" type="text/css" href="layout.css">
+
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
 </head>
-<body style="margin: 0; background-color: black;">
+<body>
 
-  <script type="text/javascript" src="jquery/jquery-1.12.3.min.js"></script>
-  <!-- <script type="text/javascript" src="js/web-audio-cracked/dist/cracked.min.js"></script> -->
-  <script src="js/three.min.js"></script>
-  <script src="js/audio-feature-extractor.js"></script>
-  <script data-src="shaders/vert.js" data-name="shader" type="x-shader/x-vertex"></script>
-  <script data-src="shaders/frag.js" data-name="shader" type="x-shader/x-fragment"></script>
-  <script data-src="shaders/circles/vert.js" data-name="circles" type="x-shader/x-vertex"></script>
-  <script data-src="shaders/circles/frag.js" data-name="circles" type="x-shader/x-fragment"></script>
-  <script data-src="shaders/temp/vert.js" data-name="temp" type="x-shader/x-vertex"></script>
-  <script data-src="shaders/temp/frag.js" data-name="temp" type="x-shader/x-fragment"></script>
-  <script data-src="shaders/SphericalDeformation/vertex.js" data-name="sphere" type="x-shader/x-vertex"></script>
-  <script data-src="shaders/SphericalDeformation/fragment.js" data-name="sphere" type="x-shader/x-fragment"></script>
-  <script src="shaders/loader/ShaderLoader.min.js"></script>
+
 
   <script> 
     function loadPage (name)
@@ -29,101 +20,71 @@
     }
   </script>
 
-  <script src="js/threeJSDemo.js"></script>
+  <div class="row">
+        <h1>Sean Soraghan</h1>
+        <p>sasoraghan@gmail.com</p>
+        <p>tel: 07984728618</p>
+  </div>
 
-  <script type="text/javascript">
-    var wavesDemoShadersLoadedCallback = function (data, threeDemo)
-    {
-      var shadVert = data.shader.vertex;
-      var shadFrag = data.shader.fragment;
-      var w = window.innerWidth / threeDemo.w;
-      var h = window.innerWidth / threeDemo.h;
-      var planeGeometry = new THREE.PlaneGeometry (w, h);
-      var shaderMat = new THREE.ShaderMaterial 
-      (
-          {
-              uniforms: threeDemo.uniforms, attributes: {}, 
-              vertexShader: shadVert,
-              fragmentShader: shadFrag
-          }
-      );
-      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
-      threeDemo.scene.add (fragPlane);
-    }
+  <div class="row">
+    <a href="synthships/index.html">
+      <div class="large-8 columns portfolio_image images_synthShips">
+      </div>
+    </a>
+    <div class="large-4 columns">
+      <h4>Synth Ships</h4>
+    </div>
+  </div>
 
-    var circlesDemoCallback = function (data, threeDemo)
-    {
-      var shadVert = data.circles.vertex;
-      var shadFrag = data.circles.fragment;
-      var w = window.innerWidth / threeDemo.w;
-      var h = window.innerWidth / threeDemo.h;
-      var planeGeometry = new THREE.PlaneGeometry (w, h);
-      var shaderMat = new THREE.ShaderMaterial 
-      (
-          {
-              uniforms: threeDemo.uniforms, attributes: {}, 
-              vertexShader: shadVert,
-              fragmentShader: shadFrag
-          }
-      );
-      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
-      threeDemo.scene.add (fragPlane);
-    }
+  <div class="row">
+    <div class="large-3 columns">
+      <p></p>
+    </div>
+    <a href="sketches/index.html">
+      <div class="large-3 columns portfolio_image images_sketches">
+      </div>
+    </a>
+    <div class="large-3 columns">
+      <h4>GLSL Sketches</h4>
+    </div>
+    <div class="large-3 columns">
+    </div>
+  </div>
 
-    var tempDemoCallback = function (data, threeDemo)
-    {
-      var shadVert = data.temp.vertex;
-      var shadFrag = data.temp.fragment;
-      var w = window.innerWidth / threeDemo.w;
-      var h = window.innerWidth / threeDemo.h;
-      var planeGeometry = new THREE.PlaneGeometry (w, h);
-      var shaderMat = new THREE.ShaderMaterial 
-      (
-          {
-              uniforms: threeDemo.uniforms, attributes: {}, 
-              vertexShader: shadVert,
-              fragmentShader: shadFrag
-          }
-      );
-      var fragPlane = new THREE.Mesh ( planeGeometry, shaderMat ); 
-      threeDemo.scene.add (fragPlane);
-    }
+  <div class="row">
+    <div class="large-4 columns">
+      <h4>Waveform Visualisation Survey</h4>
+    </div>
+    <a href="audiovisualuserstudy/index.html">
+      <div class="large-8 columns portfolio_image images_signature">
+      </div>
+    </a>
+  </div>
 
-    var sphereDemoShadersLoadedCallback = function (data, threeDemo)
-    {
-      
-      var shadVert = data.sphere.vertex;
-      var shadFrag = data.sphere.fragment;
-      var sphereGeometry = new THREE.SphereGeometry (50, 64, 64);
-      var shaderMat = new THREE.ShaderMaterial 
-      (
-          {
-              uniforms: threeDemo.uniforms, attributes: {}, 
-              vertexShader: shadVert,
-              fragmentShader: shadFrag
-          }
-      );
-      var fragPlane = new THREE.Mesh ( sphereGeometry, shaderMat ); 
-      threeDemo.scene.add (fragPlane);
-    }
-  </script>
+ <!-- 
+  <div id="squarelink">
+    <a href="sketches/index.html" style="color: rgb(255,255,255)">
+      <figure>
+        <img src="images/sketches.PNG" alt="GLSL Sketches" width="295" height="282">
+        <figcaption>GLSL Sketches</figcaption>
+      </figure>
+    </a>
+  </div>
 
+  <div id="rectlink">
+    <a href="audiovisualuserstudy/index.html" style="color: rgb(255,255,255)">
+      <figure>
+        <img src="images/signature.jpg" alt="Waveform Visualisation Survey" width="512" height="64">
+        <figcaption>Waveform Visualisation Survey</figcaption>
+      </figure>
+    </a>
+  </div>
+-->
   
 
-  <div class="threedemolist" id="threecontainer">
-      <script>
-        var numR = 2;
-        var numC = 2;
-        var waves = new ThreeJSDemo (numR, numC, wavesDemoShadersLoadedCallback);
-        var sphere = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-        var circles = new ThreeJSDemo (numR, numC, circlesDemoCallback);
-        var spiral = new ThreeJSDemo (numR, numC, tempDemoCallback);
-      </script>
-  </div>
-
-<div id="title">
-        <div id="center">Sean Soraghan</div>
-  </div>
+<footer>
+  <h6>All rights reserved. (c) Sean Soraghan</h6>
+</footer>  
 
 </body>
 </html>
