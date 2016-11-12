@@ -4,7 +4,7 @@ body {
 	color: white;
 }
 
-html, body, h1, h4, h6 {
+html, body, h1, h2, h4, h5, h6 {
 	font-family: "Poiret One", Helvetica, sans-serif;
 }
 
@@ -16,10 +16,19 @@ h1
 	z-index: 1;
 	text-align: center;
 }
-
+h2{
+	height: 2em;
+	font-size: 3em;
+	text-align: center;
+}
 h4 {
 	margin: 3em;
 	font-size: 2em;
+}
+
+h5 {
+	margin: 1em;
+	font-size: 1em;
 }
 
 h6 {
@@ -30,6 +39,11 @@ h6 {
 p {
 	font-size: 1em;
 	text-align: center;
+}
+
+.heading{
+	margin-top: 8em;
+	margin-bottom: 8em;
 }
 
 .row {
@@ -58,3 +72,31 @@ p {
 	background-size: cover;
 	background-position: center center;
 }
+
+.images_feature-extractor {
+	background: url("images/feature-extractor.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.publication_image{
+	border: 5px solid black;
+	height: 40vh;
+}
+.images_icmc2014{
+	background: url("images/icmc2014.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_eva2016{
+	background: url("images/eva2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_nime2016{
+	background: url("images/nime2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+
