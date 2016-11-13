@@ -1,12 +1,16 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="../foundation.css">
+  <link rel="stylesheet" type="text/css" href="../layout.css">
+
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
 </head>
+
 <body style="margin: 0; background-color: black;">
-  Click and drag
   <script type="text/javascript">
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   </script>
@@ -21,6 +25,8 @@
   <script data-src="../shaders/SphericalDeformation/audio-reactive-frag.js" data-name="sphere" type="x-shader/x-fragment"></script>
   <script src="../shaders/loader/ShaderLoader.min.js"></script>
 
+  
+  
   <script> 
     function loadPage (name)
     {
@@ -62,66 +68,46 @@
     }
   </script>
 
-  
-
-  <script>
-    var clock = new Clock();
-    var scene = new ThreeScene();
-    //scene.objects.push (sinW);
-    var sinOsc = new Synth (1024, 0, 200);
-    var sinw = new SphereActor (sphereDemoShadersLoadedCallback, sinOsc, scene, -50, 0);
-
-    var sqrOsc = new Synth (1024, 1, 300);
-    var sqrw = new SphereActor (sphereDemoShadersLoadedCallback, sqrOsc, scene, 0, 0);
-
-    var sawOsc = new Synth (1024, 2, 400);
-    var sawT = new SphereActor (sphereDemoShadersLoadedCallback, sawOsc, scene, 50, 0);
-
-    //scene.scene.add (sinw.sphere);
-    scene.objects.push (sinw);
-    scene.objects.push (sqrw);
-    scene.objects.push (sawT);
-
-    clock.dottedCallback = function()
-    {
-      sinw.trigger();
-    }
-
-    clock.crotchetCallback = function()
-    {
-      sqrw.trigger();
-    }
-
-    clock.fiveCallback = function()
-    {
-      sawT.trigger();
-    }
-
     
+  <div id="threescene">
+    <script>
+      var clock = new Clock();
+      var scene = new ThreeScene();
 
-    clock.startClock();
-    // var sqrOsc = new Synth (1024, 1);
-    // var sqrW = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sqrOsc);
+      var sinOsc = new Synth (1024, 0, 200);
+      var sinw = new SphereActor (sphereDemoShadersLoadedCallback, sinOsc, scene, -50, 0);
 
-    // var sawOsc = new Synth (1024, 2);
-    // var sawT = new SynthVisualiser (numR, numC, sphereDemoShadersLoadedCallback, sawOsc);
+      var sqrOsc = new Synth (1024, 1, 300);
+      var sqrw = new SphereActor (sphereDemoShadersLoadedCallback, sqrOsc, scene, 0, 0);
 
+      var sawOsc = new Synth (1024, 2, 400);
+      var sawT = new SphereActor (sphereDemoShadersLoadedCallback, sawOsc, scene, 50, 0);
 
+      scene.objects.push (sinw);
+      scene.objects.push (sqrw);
+      scene.objects.push (sawT);
 
-    // var tempo = 130.0;
-    // var quarterNoteTime = 60.0 / tempo;
+      clock.dottedCallback = function()
+      {
+        sinw.trigger();
+      }
 
-    // var startTime = audioCtx.currentTime;
-    // sinOsc.trigger (startTime + quarterNoteTime);
-    // sinOsc.trigger (startTime + quarterNoteTime * 2.0);
-    // sinOsc.trigger (startTime + quarterNoteTime * 3.0);
-    // sinOsc.trigger (startTime + quarterNoteTime * 4.0);
-    // var sawT = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-    // var sqrW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-    // var plsW = new ThreeJSDemo (numR, numC, sphereDemoShadersLoadedCallback);
-  </script>
+      clock.crotchetCallback = function()
+      {
+        sqrw.trigger();
+      }
 
+      clock.fiveCallback = function()
+      {
+        sawT.trigger();
+      }
 
+      clock.startClock();
+    </script>
+  </div>
 
+  <h2>Synth Ships</h2>
+  <p>Click and drag the spheres</p>
+  
 </body>
 </html>

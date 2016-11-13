@@ -113,17 +113,13 @@ function ThreeScene()
     {
         scene.scene = new THREE.Scene();
         scene.renderer = new THREE.WebGLRenderer ({antialias:true});
-        var w = window.innerWidth;// / scene.w;
-        var h = window.innerHeight;// / scene.h;
-        // var dim = Math.min (w, h);
-        // w = dim;
-        // h = dim;
+        var w = window.innerWidth;
+        var h = window.innerHeight;
         scene.renderer.setSize (w, h);
         scene.renderer.setClearColor( 0x00, 1);
 
-        // var threeContainer = document.getElementById ('threescenecontainer');
-        // var sceneDoc = document.createElement ('div');
-        // sceneDoc.appendChild (scene.renderer.domElement);
+        var threeScene = document.getElementById ('threescene');
+        threeScene.appendChild (scene.renderer.domElement);
 
         scene.renderer.domElement.addEventListener ('mousedown', function()
         {
@@ -136,32 +132,29 @@ function ThreeScene()
         {
             //check movement vector
             var mousePos = new THREE.Vector2 (event.x, event.y);
-           	var mouseInWorld = projectMouseIntoWorld (mousePos, scene);
-           	for (var i = scene.objects.length - 1; i >= 0; i--) 
-			{
-				var actor = scene.objects[i];
-				if (actor.selected)
-					actor.updateMovementVector (mouseInWorld);
-			}
+            var mouseInWorld = projectMouseIntoWorld (mousePos, scene);
+            for (var i = scene.objects.length - 1; i >= 0; i--) 
+            {
+                var actor = scene.objects[i];
+                if (actor.selected)
+                    actor.updateMovementVector (mouseInWorld);
+            }
         })
 
         scene.renderer.domElement.addEventListener ('mouseup', function()
         {
             //trigger selected sphere
             for (var i = scene.objects.length - 1; i >= 0; i--) 
-			{
-				var actor = scene.objects[i];
-				// if (actor.selected)
-				// 	actor.trigger();
+            {
+                var actor = scene.objects[i];
                 if (actor.selected)
                     actor.release();
-			}
+            }
 
         }, false);
 
-        // document.body.appendChild (threeDemo.renderer.domElement);
-        //threeContainer.appendChild (sceneDoc);
-        document.body.appendChild (scene.renderer.domElement);
+        scene.renderer.domElement.autofocus = true;
+
         scene.camera = new THREE.PerspectiveCamera (45, w / h, 0.1, 20000);
         scene.camera.position.set (0,0,300);
         scene.scene.add (scene.camera); 
