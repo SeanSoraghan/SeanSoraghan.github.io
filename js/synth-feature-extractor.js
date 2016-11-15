@@ -20,8 +20,9 @@ function Synth (windowSize, waveformType, freq)
       synth.audioProcessingNode = audioCtx.createScriptProcessor(windowSize);
 
       //---------------Setup Oscillator------------------------------------------
-      synth.osc = audioCtx.createOscillator();
+      synth.osc      = audioCtx.createOscillator();
       synth.gainNode = audioCtx.createGain();
+      synth.filter   = audioCtx.createBiquadFilter();
       synth.gainNode.gain.value = 0;
 
       synth.waveform = waveformType;
@@ -35,7 +36,11 @@ function Synth (windowSize, waveformType, freq)
       synth.centreFrequency = freq;
       synth.osc.frequency.value = synth.centreFrequency; // value in hertz
 
-      synth.osc                .connect (synth.gainNode);
+      synth.filter.type = 'lowpass';
+      synth.filter.frequency.value = 2000;
+
+      synth.osc                .connect (synth.filter);
+      synth.filter             .connect (synth.gainNode);
       synth.gainNode           .connect (synth.analyser);
       synth.analyser           .connect (synth.audioProcessingNode);
       synth.audioProcessingNode.connect (audioCtx.destination);
@@ -66,7 +71,7 @@ function Synth (windowSize, waveformType, freq)
 
         var g = synth.gainNode.gain;
         g.cancelScheduledValues(now);
-        g.linearRampToValueAtTime (0.99, now + synth.attackTime);
+        g.linearRampToValueAtTime (0.9, now + synth.attackTime);
         g.exponentialRampToValueAtTime(0.000001, now + synth.attackTime + synth.releaseTime);
         g.setValueAtTime (0.0, now + synth.attackTime + synth.releaseTime + 0.001);
       }
