@@ -82,6 +82,16 @@ p {
 	background-size: cover;
 	background-position: center center;
 }
+.images_roundhouse{
+	background: url("images/roundhouse.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
+.images_adc{
+	background: url("images/adc.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
 
 .publication_image{
 	border: 5px solid black;
