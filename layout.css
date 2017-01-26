@@ -82,6 +82,11 @@ p {
 	background-size: cover;
 	background-position: center center;
 }
+.images_mass_spring_system {
+	background: url("images/MassSpringLarge.png") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
 .images_roundhouse{
 	background: url("images/roundhouse.png") no-repeat;
 	background-size: cover;
