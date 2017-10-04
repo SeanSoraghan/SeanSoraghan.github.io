@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "NiamhAli.data.unityweb",
+"asmCodeUrl": "NiamhAli.asm.code.unityweb",
+"asmMemoryUrl": "NiamhAli.asm.memory.unityweb",
+"asmFrameworkUrl": "NiamhAli.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
