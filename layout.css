@@ -69,7 +69,7 @@ p {
 }
 
 .images_3dMeter {
-	background: url("images/meter3d.PNG") no-repeat;
+	background: url("images/meter3d.png") no-repeat;
 	background-size: cover;
 	background-position: center center;
 }
