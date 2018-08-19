@@ -43,7 +43,7 @@ p {
 
 .section_heading{
 	margin-top: 8em;
-	margin-bottom: 8em;
+	margin-bottom: 20em;
 }
 
 .row {
@@ -54,9 +54,24 @@ p {
 	background-color: green;
 }
 
+.image_margin {
+	height: 40vh;
+}
+
 .portfolio_image {
 	border: 5px solid white;
 	height: 40vh;
+}
+
+.media {
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_3dMeter {
+	background: url("images/3d_meter.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
 }
 
 .images_synthShips {
@@ -87,6 +102,7 @@ p {
 	background-size: cover;
 	background-position: center center;
 }
+
 .images_roundhouse{
 	background: url("images/roundhouse.png") no-repeat;
 	background-size: cover;
@@ -114,6 +130,16 @@ p {
 }
 .images_nime2016{
 	background: url("images/nime2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_cmj2018{
+	background: url("images/cmj2018.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_thesis2016{
+	background: url("images/thesis2016.PNG") no-repeat;
 	background-size: cover;
 	background-position: center center;
 }
