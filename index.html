@@ -1,16 +1,19 @@
 <!doctype html>
+
 <html lang="en">
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
   
-  <link rel="stylesheet" type="text/css" href="foundation.css">
-  <link rel="stylesheet" type="text/css" href="layout.css">
+  <link rel="stylesheet" type="text/css" href="foundation/css/foundation.css">
+  <link rel="stylesheet" href="foundation/css/app.css">
 
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
+
 <body>
   <script> 
     function loadPage (name)
@@ -27,126 +30,50 @@
     };
   </script>
 
-  <script src="js/foundation/vendor/jquery.js"></script>
-  <script src="js/foundation/vendor/what-input.js"></script>
-  <script src="js/foundation/vendor/foundation.js"></script>
-  <script src="js/foundation/app.js"></script>
+<!--Navigation ------------------------------------------------------------------------ -->
 
-<!--   <div data-sticky-container=>
-    <div data-sticky data-margin-top="0"> -->
-<!--       <div class="top-bar">
-        <div class="top-bar-title">
-          title
-        </div>
-      </div>  -->
-<!--     </div>
-  </div> -->
-
-
-<!--   <div class="top-bar-container" data-sticky-container>
-      <div class="sticky sticky-topbar" data-sticky data-options="anchor: base; marginTop: 0; stickyOn: small;">
-        <div class="top-bar">
-          <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-              <li class="menu-text">Site Title</li>
-              <li class="has-submenu">
-                <a href="#">One</a>
+<div class="top-bar-container" data-sticky-container>
+  <div class="sticky sticky-topbar" data-sticky data-options="anchor: base; marginTop: 0; stickyOn: small;">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          
+            <li class="has-submenu">
+                <a href="#"class="menu-text">Sean Soraghan</a>
                 <ul class="submenu menu vertical" data-submenu>
-                  <li><a href="#">One</a></li>
-                  <li><a href="#">Two</a></li>
-                  <li><a href="#">Three</a></li>
+                    <li><h6>sasoraghan@gmail.com</h6></li>
+                    <li><h6>@HangarSeason</h6></li>
+                    <li><h6>tel: 07999145144</h6></li>
                 </ul>
               </li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
-            </ul>
-          </div>
-          <div class="top-bar-right">
-            <ul class="menu">
-              <li><input type="search" placeholder="Search"></li>
-              <li><button type="button" class="button">Search</button></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
+          <!-- <li class="menu-text">Sean Soraghan</li> -->
 
-
-<!-- <div class="row">
-  
-    <div class="button large-4 columns" data-sticky-container>
-      <div class="sticky" data-sticky data-margin-top="0">
-        Applications & Tools
-      </div>
-    </div>
-      
-    <div class="button large-4 columns" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor="foo">
-        Events & Talks
-      </div>
-    </div>
-
-    <div class="button large-4 columns" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor="foo">
-        Publications
-      </div>
-    </div>
-  
-</div> -->
-
-<!-- <div class="sticky"> -->
-<!-- <div class="row">
-  <div class="large-12 columns" data-sticky-container> 
-    <div class="large-4 columns">
-      <a class="contact sticky is-stuck" href="#ApplicationsAndTools">Applications & Tools</a> 
-    </div>
-    <div class="large-4 columns">
-      <a class="contact sticky is-stuck" href="#EventsAndTalks">Events & Talks</a> 
-    </div>
-    <div class="large-4 columns">
-      <a class="contact sticky is-stuck" href="#Publications">Publications</a> 
+          <li><a href="#ApplicationsAndTools">Applications & Tools</a></li>
+          <li><a href="#EventsAndTalks">Events & Talks</a></li>
+          <li><a href="#Publications">Publications</a></li>
+        </ul>
+      </div>          
     </div>
   </div>
-</div> -->
-<!-- </div> -->
+</div>
 
-<!--Title ------------------------------------------------------------------------ -->
-  <div id="base">
-    <div class="row title_section">
-      <div class="large-6 column">
-        <div class="large-6 column">
-          <h1>Sean</h1>
-        </div>
-        <div class="large-6 column">
-          <h1>Soraghan</h1>
-        </div>
-      </div>
-      
-      <div class="large-6 column">
-        <div class="contact">sasoraghan@gmail.com</div>
-        <div class="contact">@HangarSeason</div>
-        <div class="contact">tel: 07999145144</div>
-      </div>
-    </div>
-    
+<div id="base">
 
-  
+  <!-- 
+    Applications & Tools ----------------------------------------------
+  -->
 
-<!-- 
-  Applications & Tools ----------------------------------------------
--->
-
-  <div class="row boxed section">
+  <div id="ApplicationsAndTools" class="row align-justify boxed section">
       <div>
-        <div id="ApplicationsAndTools" class="large-12 columns callout section_heading">
+        <div class="callout large-12 columns section_heading">
           <h2>
             Applications & Tools
           </h2>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
+      <div class="item large-4 columns">
         <div class="large-12 columns portfolio_item">
           <a href="https://blog.audiokinetic.com/visualizing-ambisonics-with-the-3d-meter/">
             <div class="large-12 columns portfolio_image images_3dMeter">
@@ -158,7 +85,7 @@
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
+      <div class="item large-4 columns">
         <div class="large-12 columns portfolio_item">
           <a href="https://assetstore.unity.com/packages/tools/physics/mass-spring-system-81451">
             <div class="large-12 columns columns portfolio_image images_mass_spring_system">
@@ -170,7 +97,7 @@
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
+      <div class="item large-4 columns">
         <div class="large-12 columns portfolio_item">
           <a href="https://www.github.com/seansoraghan/feature-extractor">
             <div class="large-12 columns portfolio_image images_feature-extractor">
@@ -186,16 +113,16 @@
 <!-- 
   Events & Talks ----------------------------------------------
 -->
-  <div class="row boxed section">
+  <div id="EventsAndTalks" class="row boxed section">
       <div>
-        <div id="EventsAndTalks" class="large-12 columns callout section_heading">
+        <div class="large-12 columns callout section_heading">
           <h2>
             Events & Talks
           </h2>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
+      <div class="item large-4 columns">
         <div class="large-12 columns portfolio_item">
           <a href="https://www.youtube.com/watch?v=ySDcSYw5jC0">
             <div class="large-12 columns portfolio_image images_roundhouse">
@@ -208,7 +135,7 @@
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
+      <div class="item large-4 columns">
         <div class="large-12 columns portfolio_item">
           <a href="https://www.youtube.com/watch?v=Hp8G0Ogovuk">
             <div class="large-12 columns portfolio_image images_adc">
@@ -224,89 +151,88 @@
 <!-- 
   Publications ----------------------------------------------
 -->
-  <div class="row boxed section">
+  <div id="Publications" class="row boxed section">
       <div>
-        <div id="Publications" class="large-12 columns callout section_heading">
+        <div class="large-12 columns callout section_heading">
           <h2>
             Publications
           </h2>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="https://www.mitpressjournals.org/doi/abs/10.1162/comj_a_00449">
-            <div class="large-12 columns portfolio_image images_cmj2018">
-            </div>
-          
             <div class="large-12 columns imtpub">
               A New Timbre Visualization Technique Based on Semantic Descriptors
             </div>
+            <div class="large-12 columns publication_image images_cmj2018">
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="https://www.mitpressjournals.org/doi/abs/10.1162/leon_a_01698">
-            <div class="large-12 columns portfolio_image images_lmj2018">
-            </div>
             <div class="large-12 columns imtpub">
               KIMA: The Wheel—Voice Turned into Vision: A participatory, immersive visual soundscape installation
             </div>
+            <div class="large-12 columns publication_image images_lmj2018">
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="http://eprints.bournemouth.ac.uk/30469/">
-            <div class="large-12 columns portfolio_image images_thesis2016">
-            </div>
             <div class="large-12 columns imtpub">
               A Perceptually Motivated Approach to Timbre Representation and Visualisation (EngD Thesis, 2016)
             </div>
+            <div class="large-12 columns publication_image images_thesis2016">
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="https://pdfs.semanticscholar.org/bac7/b4b08348ddd03af9ada7b7585b2c5d12b5d6.pdf">
-            <div class="large-12 columns portfolio_image images_nime2016">
-            </div>
             <div class="large-12 columns imtpub">
               Towards a perceptual framework for interface design in digital environments for timbre manipulation
             </div>
+            <div class="large-12 columns publication_image images_nime2016">
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="https://pdfs.semanticscholar.org/e56b/52287929b4ed9a0874380ff32498385072bd.pdf">
-            <div class="large-12 columns portfolio_image images_eva2016">
-            </div>
             <div class="large-12 columns imtpub">
               A Perceptually Motivated Visualisation Paradigm for Musical Timbre
             </div>
+            <div class="large-12 columns publication_image images_eva2016">
+            </div>
           </a>
         </div>
       </div>
 
-      <div class="callout item large-4 columns">
-        <div class="large-12 columns portfolio_item">
+      <div class="item large-4 columns">
+        <div class="large-12 columns portfolio_publication">
           <a href="https://speech.di.uoa.gr/ICMC-SMC-2014/images/VOL_1/0586.pdf">
-            <div class="large-12 columns portfolio_image images_icmc2014">
-            </div>
             <div class="large-12 columns imtpub">
               Animating Timbre: A User Study
+            </div>
+            <div class="large-12 columns publication_image images_icmc2014">
             </div>
           </a>
         </div>
       </div>
   </div>
-
+</div>
 <!-- 
   Videos ----------------------------------------------
 -->
@@ -414,9 +340,14 @@
 -->
   
 
-<footer>
-  <h6>All rights reserved. (c) Sean Soraghan</h6>
-</footer>  
+  <footer>
+    <h6>All rights reserved. (c) Sean Soraghan</h6>
+  </footer>  
+
+  <script src="foundation/js/vendor/jquery.js"></script>
+  <script src="foundation/js/vendor/what-input.js"></script>
+  <script src="foundation/js/vendor/foundation.js"></script>
+  <script src="foundation/js/app.js"></script>
 
 </body>
 </html>

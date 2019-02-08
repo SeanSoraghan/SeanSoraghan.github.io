@@ -1,0 +1,132 @@
+h2{
+	font-size: 2.5rem;
+}
+
+h6 {
+	font-size: 0.8rem;
+	text-align: left;
+}
+
+.contact{
+    width: 100%;
+}
+
+.section_heading{
+    margin-top: 5rem;
+    background-color: #e6e6e6;
+}
+
+.sticky-topbar {
+    width: 100%;
+}
+
+
+.portfolio_item{
+	height: 20rem;
+}
+.portfolio_image {
+	height: 12rem;
+}
+.imt{
+	font-size: 1.5rem;
+	text-align: left;
+	color: black;
+	margin-top: 1.5rem;
+}
+
+
+.portfolio_publication{
+    height: 30rem;
+}
+.publication_image {
+	height: 20rem;
+}
+.imtpub{
+	font-size: 1.2rem;
+    text-align: left;
+    height: 3.5rem;
+	color: black;
+	margin-top: 1.5rem;
+}
+
+
+.images_3dMeter {
+	background: url("images/meter3d.png") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_synthShips {
+	background: url("images/synthShips.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_sketches {
+	background: url("images/sketches.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_signature {
+	background: url("images/signature.jpg") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_feature-extractor {
+	background: url("images/feature-extractor.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_mass_spring_system {
+	background: url("images/MassSpringLarge.png") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.images_roundhouse{
+	background: url("images/roundhouse.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
+.images_adc{
+	background: url("images/adc.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
+
+.publication_image{
+	border: 5px solid black;
+	height: 40vh;
+}
+.images_icmc2014{
+	background: url("images/icmc2014.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_eva2016{
+	background: url("images/eva2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_nime2016{
+	background: url("images/nime2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_cmj2018{
+	background: url("images/cmj2018.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_thesis2016{
+	background: url("images/thesis2016.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.images_lmj2018{
+	background: url("images/lmj2018.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
