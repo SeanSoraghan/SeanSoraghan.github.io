@@ -8,11 +8,10 @@
 
   <title>Sean Soraghan</title>
   <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-
-
   <script> 
     function loadPage (name)
     {
@@ -28,85 +27,307 @@
     };
   </script>
 
+  <script src="js/foundation/vendor/jquery.js"></script>
+  <script src="js/foundation/vendor/what-input.js"></script>
+  <script src="js/foundation/vendor/foundation.js"></script>
+  <script src="js/foundation/app.js"></script>
+
+<!--   <div data-sticky-container=>
+    <div data-sticky data-margin-top="0"> -->
+<!--       <div class="top-bar">
+        <div class="top-bar-title">
+          title
+        </div>
+      </div>  -->
+<!--     </div>
+  </div> -->
+
+
+<!--   <div class="top-bar-container" data-sticky-container>
+      <div class="sticky sticky-topbar" data-sticky data-options="anchor: base; marginTop: 0; stickyOn: small;">
+        <div class="top-bar">
+          <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+              <li class="menu-text">Site Title</li>
+              <li class="has-submenu">
+                <a href="#">One</a>
+                <ul class="submenu menu vertical" data-submenu>
+                  <li><a href="#">One</a></li>
+                  <li><a href="#">Two</a></li>
+                  <li><a href="#">Three</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+            </ul>
+          </div>
+          <div class="top-bar-right">
+            <ul class="menu">
+              <li><input type="search" placeholder="Search"></li>
+              <li><button type="button" class="button">Search</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+<!-- <div class="row">
+  
+    <div class="button large-4 columns" data-sticky-container>
+      <div class="sticky" data-sticky data-margin-top="0">
+        Applications & Tools
+      </div>
+    </div>
+      
+    <div class="button large-4 columns" data-sticky-container>
+      <div class="sticky" data-sticky data-anchor="foo">
+        Events & Talks
+      </div>
+    </div>
+
+    <div class="button large-4 columns" data-sticky-container>
+      <div class="sticky" data-sticky data-anchor="foo">
+        Publications
+      </div>
+    </div>
+  
+</div> -->
+
+<!-- <div class="sticky"> -->
+<!-- <div class="row">
+  <div class="large-12 columns" data-sticky-container> 
+    <div class="large-4 columns">
+      <a class="contact sticky is-stuck" href="#ApplicationsAndTools">Applications & Tools</a> 
+    </div>
+    <div class="large-4 columns">
+      <a class="contact sticky is-stuck" href="#EventsAndTalks">Events & Talks</a> 
+    </div>
+    <div class="large-4 columns">
+      <a class="contact sticky is-stuck" href="#Publications">Publications</a> 
+    </div>
+  </div>
+</div> -->
+<!-- </div> -->
+
+<!--Title ------------------------------------------------------------------------ -->
   <div id="base">
-    <div class="row">
-          <h1>Sean Soraghan</h1>
-          <p>sasoraghan@gmail.com</p>
-          <p>@HangarSeason</p>
-          <p>tel: 07999145144</p>
+    <div class="row title_section">
+      <div class="large-6 column">
+        <div class="large-6 column">
+          <h1>Sean</h1>
+        </div>
+        <div class="large-6 column">
+          <h1>Soraghan</h1>
+        </div>
+      </div>
+      
+      <div class="large-6 column">
+        <div class="contact">sasoraghan@gmail.com</div>
+        <div class="contact">@HangarSeason</div>
+        <div class="contact">tel: 07999145144</div>
+      </div>
     </div>
     
+
+  
+
 <!-- 
   Applications & Tools ----------------------------------------------
 -->
 
-    <div class="section_heading">
-      <div class="large-12 columns">
-        <h2>
-          Applications & Tools
-        </h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="large-4 columns">
-        <h4>Wwise 3D Meter</h4>
-      </div>
-      <a href="https://blog.audiokinetic.com/visualizing-ambisonics-with-the-3d-meter/">
-        <div class="large-6 columns portfolio_image media images_3dMeter">
+  <div class="row boxed section">
+      <div>
+        <div id="ApplicationsAndTools" class="large-12 columns callout section_heading">
+          <h2>
+            Applications & Tools
+          </h2>
         </div>
-      </a>
-    </div> 
+      </div>
 
-    <div class="row">
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://blog.audiokinetic.com/visualizing-ambisonics-with-the-3d-meter/">
+            <div class="large-12 columns portfolio_image images_3dMeter">
+            </div>
+            <div class="large-12 columns imt">
+              Wwise 3D Meter
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://assetstore.unity.com/packages/tools/physics/mass-spring-system-81451">
+            <div class="large-12 columns columns portfolio_image images_mass_spring_system">
+            </div>
+            <div class="large-12 columns imt">
+              Unity Mass Spring System
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://www.github.com/seansoraghan/feature-extractor">
+            <div class="large-12 columns portfolio_image images_feature-extractor">
+            </div>
+            <div class="large-12 columns imt">
+              Audio Feature Extractor
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+
+<!-- 
+  Events & Talks ----------------------------------------------
+-->
+  <div class="row boxed section">
+      <div>
+        <div id="EventsAndTalks" class="large-12 columns callout section_heading">
+          <h2>
+            Events & Talks
+          </h2>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://www.youtube.com/watch?v=ySDcSYw5jC0">
+            <div class="large-12 columns portfolio_image images_roundhouse">
+            </div>
+          
+            <div class="large-12 columns imt">
+              Ron Arad's Curtain Call 2016
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://www.youtube.com/watch?v=Hp8G0Ogovuk">
+            <div class="large-12 columns portfolio_image images_adc">
+            </div>
+            <div class="large-12 columns imt">
+              Audio Developer's Conference 2016
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+
+<!-- 
+  Publications ----------------------------------------------
+-->
+  <div class="row boxed section">
+      <div>
+        <div id="Publications" class="large-12 columns callout section_heading">
+          <h2>
+            Publications
+          </h2>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://www.mitpressjournals.org/doi/abs/10.1162/comj_a_00449">
+            <div class="large-12 columns portfolio_image images_cmj2018">
+            </div>
+          
+            <div class="large-12 columns imtpub">
+              A New Timbre Visualization Technique Based on Semantic Descriptors
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://www.mitpressjournals.org/doi/abs/10.1162/leon_a_01698">
+            <div class="large-12 columns portfolio_image images_lmj2018">
+            </div>
+            <div class="large-12 columns imtpub">
+              KIMA: The Wheel—Voice Turned into Vision: A participatory, immersive visual soundscape installation
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="http://eprints.bournemouth.ac.uk/30469/">
+            <div class="large-12 columns portfolio_image images_thesis2016">
+            </div>
+            <div class="large-12 columns imtpub">
+              A Perceptually Motivated Approach to Timbre Representation and Visualisation (EngD Thesis, 2016)
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://pdfs.semanticscholar.org/bac7/b4b08348ddd03af9ada7b7585b2c5d12b5d6.pdf">
+            <div class="large-12 columns portfolio_image images_nime2016">
+            </div>
+            <div class="large-12 columns imtpub">
+              Towards a perceptual framework for interface design in digital environments for timbre manipulation
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://pdfs.semanticscholar.org/e56b/52287929b4ed9a0874380ff32498385072bd.pdf">
+            <div class="large-12 columns portfolio_image images_eva2016">
+            </div>
+            <div class="large-12 columns imtpub">
+              A Perceptually Motivated Visualisation Paradigm for Musical Timbre
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="callout item large-4 columns">
+        <div class="large-12 columns portfolio_item">
+          <a href="https://speech.di.uoa.gr/ICMC-SMC-2014/images/VOL_1/0586.pdf">
+            <div class="large-12 columns portfolio_image images_icmc2014">
+            </div>
+            <div class="large-12 columns imtpub">
+              Animating Timbre: A User Study
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+
+<!-- 
+  Videos ----------------------------------------------
+-->
+
+<!--     <div class="row">
       <div class="large-4 columns">
-        <h4><a href="https://assetstore.unity.com/packages/tools/physics/mass-spring-system-81451">Mass-Spring System</a></h4>
+        <h4><a class="link" href="https://assetstore.unity.com/packages/tools/physics/mass-spring-system-81451">Mass-Spring System</a></h4>
       </div>
       <a href="https://www.assetstore.unity3d.com/en/#!/content/81451">
         <div class="large-6 columns media">
           <iframe src="https://player.vimeo.com/video/201013662" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
       </a>
-    </div>
+    </div> -->
 
-    <div class="row">
-      <div class="large-4 columns">
-        <h4>Audio Feature Extractor</h4>
-      </div>
-      <a href="https://www.github.com/seansoraghan/feature-extractor">
-        <div class="large-6 columns portfolio_image media images_feature-extractor">
-        </div>
-      </a>
-    </div>
 
-<!-- 
-  Events & Talks ----------------------------------------------
--->
 
-    <div class="section_heading">
-      <div class="large-12 columns">
-        <h2>
-          Events & Talks
-        </h2>
-      </div>
-    </div>
-
-    <div class="row">
-    <div class="large-1 columns">
-      </div>
-      <div class="large-4 columns">
-        <h4>Ron Arad's Curtain Call 2016</h4>
-      </div>
-      <a href="https://www.youtube.com/watch?v=ySDcSYw5jC0">
-        <div class="large-6 columns portfolio_image media images_roundhouse">
-        </div>
-      </a>
-      
-    </div>
-
-    <div class="row">
+    <!-- <div class="row"> -->
     <!--<div class="large-1 columns">
       </div>-->
-      <div class="large-4 columns">
+<!--       <div class="large-4 columns">
         <h4>Audio Developers Conference 2016</h4>
       </div>
       <a href="https://www.youtube.com/watch?v=Hp8G0Ogovuk">
@@ -116,89 +337,14 @@
       </a>
       <div class="large-1 columns">
       </div>
-    </div>
+    </div> -->
 
-<!-- 
-  Research & Publications ----------------------------------------------
--->
-
-    <div class="section_heading">
-      <div class="large-12 columns">
-        <h2>
-          Research & Publications
-        </h2>
-      </div>
-    </div>
-
-    <div id="desktopOnly">
-      <div class="row" id="waveformStudy">
-        <div class="large-4 columns">
-          <h4>Waveform Visualisation Survey</h4>
-        </div>
-        <a href="audiovisualuserstudy/index.html">
-          <div class="large-6 columns portfolio_image media images_signature">
-          </div>
-        </a>
-        
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-3 columns">
-        <h5>A New Timbre Visualization Technique Based on Semantic Descriptors</h5>
-        <h5>Leonardo Music Journal (2018): 1-13.</h5>
-      </div>
-      <a href="https://www.mitpressjournals.org/doi/abs/10.1162/comj_a_00449">
-        <div class="large-3 columns publication_image media images_lmj2018">
-        </div>
-      </a>
-      <div class="large-3 columns">
-        <h5>KIMA: The Wheel—Voice Turned into Vision: A participatory, immersive visual soundscape installation</h5>
-        <h5>Computer Music Journal 42.1 (2018): 23-36.</h5>
-      </div>
-      <a href="https://www.mitpressjournals.org/doi/abs/10.1162/leon_a_01698">
-        <div class="large-3 columns publication_image media images_cmj2018">
-        </div>
-      </a>
-      <div class="large-3 columns">
-        <h5>A Perceptually Motivated Approach to Timbre Representation and Visualisation (EngD Thesis, 2016)</h5>
-      </div>
-      <a href="http://eprints.bournemouth.ac.uk/30469/7/SORAGHAN%2C%20Sean_D.Eng_2016.pdf">
-        <div class="large-3 columns publication_image media images_thesis2016">
-        </div>
-      </a>
-      <div class="large-3 columns">
-        <h5>Towards a perceptual framework for interface design in digital environments for timbre manipulation</h5>
-        <h5>in Proceedings of the international conference on new interfaces for musical expression, Brisbane, Australia, 2016, p. 413–418.</h5>
-      </div>
-      <a href="http://www.nime.org/proceedings/2016/nime2016_paper0081.pdf">
-        <div class="large-3 columns publication_image media images_nime2016">
-        </div>
-      </a>
-      <div class="large-3 columns">
-        <h5>A Perceptually Motivated Visualisation Paradigm for Musical Timbre</h5>
-        <h5>in Proceedings of Electronic Visualisation and the Arts (EVA), London, UK, 2016.</h5>
-      </div>
-      <a href="http://dl.acm.org/citation.cfm?id=3003492">
-        <div class="large-3 columns publication_image media images_eva2016">
-        </div>
-      </a>
-      <div class="large-3 columns">
-        <h5>Animating Timbre: A User Study</h5>
-        <h5>in Proceedings of the International Computer Music Conference (ICMC), Athens, Greece, 2014.</h5>
-      </div>
-      <a href="http://tinyurl.com/jgtm5ez">
-        <div class="large-3 columns publication_image media images_icmc2014">
-        </div>
-      </a>
-    </div>
-  </div>
 
 <!-- 
   Digital Doodles ----------------------------------------------
 -->
 
-    <div id="desktopOnly">
+<!--     <div id="desktopOnly">
       <div class="section_heading">
         <div class="large-12 columns">
           <h2>
@@ -213,7 +359,7 @@
           <h4>Synth Ships</h4>
         </div>
         <a href="synthships/index.html">
-          <div class="large-6 columns portfolio_image media images_synthShips" background=url("images/synthShips.PNG") no-repeat>
+          <div class="large-6 columns portfolio_image media images_synthShips">
           </div>
         </a>
         
@@ -230,7 +376,7 @@
         <div class="large-1 columns">
         </div>
       </div>
-    </div>
+    </div> -->
 
 
 
