@@ -26,9 +26,15 @@ h6 {
 }
 
 .section_heading{
-    margin-top: 18rem;
+    margin-top: 5.75rem;
 	background-color: #3a3a3a;
 	color: #e6e6e6;
+}
+
+@media screen and (max-width: 768px) {
+	.section_heading {
+	   margin-top: 17.5rem;
+	}
 }
 
 .section_heading.first{
