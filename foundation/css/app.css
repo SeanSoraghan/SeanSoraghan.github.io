@@ -12,6 +12,11 @@ h6 {
 	text-align: center;
 }
 
+.nav-menu.columns{
+	padding-left: 0;
+	padding-right: 0;
+}
+
 .menu-text.contact{
 	font-weight: lighter;
 	color: #3a3a3a;
