@@ -7,13 +7,19 @@ h6 {
 	text-align: left;
 }
 
-.contact{
-    width: 100%;
+.dark-text{
+	color: #3a3a3a;
+}
+
+.menu-text.contact{
+	font-weight: lighter;
+	color: #3a3a3a;
 }
 
 .section_heading{
     margin-top: 5rem;
-    background-color: #e6e6e6;
+	background-color: #3a3a3a;
+	color: #e6e6e6;
 }
 
 .sticky-topbar {
@@ -29,6 +35,7 @@ h6 {
 	height: 20rem;
 }
 .portfolio_image {
+	border: 5px solid #3a3a3a;
 	height: 12rem;
 }
 .imt{
@@ -42,8 +49,9 @@ h6 {
 .portfolio_publication{
     height: 30rem;
 }
-.publication_image {
-	height: 20rem;
+.publication_image{
+	border: 5px solid #3a3a3a;
+	height: 40vh;
 }
 .imtpub{
 	font-size: 1.2rem;
@@ -98,11 +106,6 @@ h6 {
 	background: url("images/adc.png") no-repeat;
 	background-size: cover;
 	background-position: center center;	
-}
-
-.publication_image{
-	border: 5px solid black;
-	height: 40vh;
 }
 .images_icmc2014{
 	background: url("images/icmc2014.PNG") no-repeat;
