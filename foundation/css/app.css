@@ -29,6 +29,7 @@ h6 {
 .topbar-button{
 	font-size: 0.8rem;
 	text-align: center;
+	z-index: 200;
 }
 
 .portfolio_item{
