@@ -9,17 +9,25 @@ h6 {
 
 .dark-text{
 	color: #3a3a3a;
+	text-align: center;
 }
 
 .menu-text.contact{
 	font-weight: lighter;
 	color: #3a3a3a;
+	text-align: center;
+	size: 0.3rem;
+	background: white;
 }
 
 .section_heading{
-    margin-top: 13rem;
+    margin-top: 18rem;
 	background-color: #3a3a3a;
 	color: #e6e6e6;
+}
+
+.section_heading.first{
+	margin-top:0;
 }
 
 .sticky-topbar {
@@ -30,6 +38,7 @@ h6 {
 	font-size: 0.8rem;
 	text-align: center;
 	z-index: 200;
+	
 }
 
 .portfolio_item{
