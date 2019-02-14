@@ -145,6 +145,11 @@ h6 {
 	background-size: cover;
 	background-position: center center;
 }
+.images_juce_unreal_bridge {
+	background: url("images/unrealJUCE.PNG") no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
 
 .images_roundhouse{
 	background: url("images/roundhouse.png") no-repeat;
