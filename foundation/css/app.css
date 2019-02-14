@@ -16,17 +16,34 @@ h6 {
 	text-align: center;
 }
 
+.contact-info{
+	margin-bottom: 1rem;
+}
+
+.nav-menu{
+	margin-bottom: 0;
+	margin-top:0;
+}
 .nav-menu.columns{
 	padding-left: 0;
 	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.nav-item{
+	margin-bottom: 0;
+	margin-top:0;
+	float:center;
 }
 
-.menu-text.contact{
+
+.contact{
 	font-weight: lighter;
 	color: #3a3a3a;
 	text-align: center;
-	size: 0.3rem;
 	background: white;
+	margin-top: 0.08rem;
+	margin-bottom: 0.08rem;
 }
 
 .section_heading{
@@ -36,15 +53,21 @@ h6 {
 	color: #e6e6e6;
 }
 
-@media screen and (max-width: 768px) {
-	.section_heading {
-	   margin-top: 17.5rem;
-	}
-}
-
 .section_heading.first{
 	margin-top:0;
 }
+
+@media screen and (max-width: 768px) {
+	.section_heading {
+	   margin-top: 11rem;
+	}
+	.contact{
+		margin-top: 0.9rem;
+		margin-bottom: 0.9rem;
+	}
+}
+
+
 
 .sticky-topbar {
     width: 100%;
@@ -88,8 +111,7 @@ h6 {
 	margin-bottom: 1.5rem;
 }
 
-
-.images_3dMeter {
+.images_3dmeter {
 	background: url("images/meter3d.png") no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -126,6 +148,16 @@ h6 {
 
 .images_roundhouse{
 	background: url("images/roundhouse.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
+.images_kinetica{
+	background: url("images/kinetica2016.png") no-repeat;
+	background-size: cover;
+	background-position: center center;	
+}
+.images_labri{
+	background: url("images/labri2016.jpg") no-repeat;
 	background-size: cover;
 	background-position: center center;	
 }
