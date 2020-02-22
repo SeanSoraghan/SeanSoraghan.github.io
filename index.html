@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-  
+
   <link rel="stylesheet" type="text/css" href="foundation/css/foundation.css">
   <link rel="stylesheet" href="foundation/css/app.css">
 
@@ -15,7 +15,7 @@
 
 
 <body>
-  <script> 
+  <script>
     function loadPage (name)
     {
         window.location = 'https://seansoraghan.github.io/' + name;
@@ -30,9 +30,13 @@
     };
   </script>
 
+  <script>
+      if (!window.mobileAndTabletcheck())
+        document.location = 'https://seansoraghan.github.io/portfolio'
+  </script>
 <!--Navigation ------------------------------------------------------------------------ -->
 
-  
+
 <div id="base">
 
 <div class="top-bar-container" data-sticky-container>
@@ -59,7 +63,7 @@
 
 
 
-  <!-- 
+  <!--
     Applications & Tools ----------------------------------------------
   -->
 
@@ -130,7 +134,7 @@
 
   </div>
 
-<!-- 
+<!--
   Events & Talks ----------------------------------------------
 -->
   <div id="EventsAndTalks" class="row">
@@ -147,7 +151,7 @@
           <a href="https://www.youtube.com/watch?v=ySDcSYw5jC0">
             <div class="large-12 columns portfolio_image images_roundhouse">
             </div>
-          
+
             <div class="large-12 columns imt">
               Ron Arad's Curtain Call, London 2016
             </div>
@@ -160,7 +164,7 @@
           <a href="https://www.youtube.com/watch?v=8VBkL0GvUjc">
             <div class="large-12 columns portfolio_image images_kinetica">
             </div>
-          
+
             <div class="large-12 columns imt">
               Kinetica, London 2016
             </div>
@@ -173,7 +177,7 @@
           <a href="https://youtu.be/L-itZ9r4Hn4?t=80">
             <div class="large-12 columns portfolio_image images_labri">
             </div>
-          
+
             <div class="large-12 columns imt">
               Foundation L'Abri, Geneva 2016
             </div>
@@ -198,10 +202,10 @@
 
       <div class="large-4 columns">
       </div>
-      
+
   </div>
 
-<!-- 
+<!--
   Publications ----------------------------------------------
 -->
   <div id="Publications" class="row">
@@ -286,7 +290,7 @@
       </div>
   </div>
 </div>
-<!-- 
+<!--
   Videos ----------------------------------------------
 -->
 
@@ -319,7 +323,7 @@
     </div> -->
 
 
-<!-- 
+<!--
   Digital Doodles ----------------------------------------------
 -->
 
@@ -332,7 +336,7 @@
         </div>
       </div>
 
-    
+
       <div class="row" id="synthships">
         <div class="large-4 columns">
           <h4>Synth Ships</h4>
@@ -341,7 +345,7 @@
           <div class="large-6 columns portfolio_image media images_synthShips">
           </div>
         </a>
-        
+
       </div>
 
       <div class="row" id="glslSketches">
@@ -360,7 +364,7 @@
 
 
 
-    
+
 
 
 
@@ -370,9 +374,9 @@
       if (window.mobileAndTabletcheck()) {parent.removeChild(child);}
   </script>
 
-  
 
- <!-- 
+
+ <!--
   <div id="squarelink">
     <a href="sketches/index.html" style="color: rgb(255,255,255)">
       <figure>
@@ -391,11 +395,11 @@
     </a>
   </div>
 -->
-  
+
 
   <footer>
     <h6>All rights reserved. (c) Sean Soraghan</h6>
-  </footer>  
+  </footer>
 
   <script src="foundation/js/vendor/jquery.js"></script>
   <script src="foundation/js/vendor/what-input.js"></script>
